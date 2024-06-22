@@ -94,6 +94,7 @@ const SidebarData = [
         bgcolor: "bg-danger",
         badgeValue: "8",
         subItem: [
+            { sublabel: "Form Order", link: "/form-orders" },
             { sublabel: "Form Elements", link: "/form-elements" },
             { sublabel: "Form Validation", link: "/form-validation" },
             { sublabel: "Form Advanced Plugins", link: "/form-advanced" },

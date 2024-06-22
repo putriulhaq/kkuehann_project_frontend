@@ -62,6 +62,7 @@ import UiPopovers from "../Pages/UiElements/UiPopovers&Tooltips";
 import UiRating from "../Pages/UiElements/UiRating";
 
 // Import Forms
+import FormOrder from "../Pages/Forms/FormOrder";
 import FormEditors from "../Pages/Forms/FormEditors";
 import FormUpload from "../Pages/Forms/FormUpload";
 import FormXeditable from "../Pages/Forms/FormXeditable";
@@ -143,6 +144,7 @@ const authProtectedRoutes = [
   { path: "/ui-rating", component: <UiRating /> },
 
   // Forms pages
+  { path: "/form-orders", component: <FormOrder /> },
   { path: "/form-elements", component: <FormElements /> },
   { path: "/form-validation", component: <FormValidations /> },
   { path: "/form-advanced", component: <FormAdvanced /> },
