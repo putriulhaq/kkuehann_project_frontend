@@ -25,10 +25,10 @@ const FormOrder = () => {
   const [formElements, setFormElements] = useState([]); 
   const [dataMenu, setMenu] = useState([]); 
   const [formData, setFormData] = useState({
-    customerName: "",
+    cust_name: "",
     address: "",
-    telephone: "",
-    date_time: "",
+    no_tlp: "",
+    req_date_order: "",
     orderItems: [],
   });
 
@@ -38,10 +38,10 @@ const FormOrder = () => {
   
 
   const addFormElement = () => {
-    setFormElements([...formElements, { selectValue: "", quantity: "" }]);
+    setFormElements([...formElements, { menu_id: "", quantity: "" }]);
     setFormData({
         ...formData,
-        orderItems: [...formData.orderItems, { selectValue: "", quantity: "" }],
+        orderItems: [...formData.orderItems, { menu_id: "", quantity: "" }],
       });
   };
 
@@ -75,8 +75,11 @@ const FormOrder = () => {
     });
   };
 
+  // export const postSocialLogin = data => api.create(url.SOCIAL_LOGIN, data);
+
   const submitOrder = () => {
     console.log(formData)
+    api.create(BASE_URL + url.POST_ORDER, formData).then((res) => console.log(res))
     // fetch("https://your-server-endpoint/api/orders", {
     //   method: "POST",
     //   headers: {
@@ -108,12 +111,12 @@ const FormOrder = () => {
             <Col>
               <Card>
                 <CardBody>
-                  <CardTitle className="h4">Textual inputs</CardTitle>
+                  {/* <CardTitle className="h4">Textual inputs</CardTitle>
                   <p className="card-title-desc">
                     Here are examples of <code>.form-control</code> applied to
                     each textual HTML5 <code>&lt;input&gt;</code>{" "}
                     <code>type</code>.
-                  </p>
+                  </p> */}
 
                   <Row className="mb-3">
                     <label htmlFor="example-text-input" className="col-md-2 col-form-label">
@@ -123,8 +126,8 @@ const FormOrder = () => {
                       <input
                         className="form-control"
                         type="text"
-                        id="customerName"
-                        name="customerName"
+                        id="cust_name"
+                        name="cust_name"
                         placeholder="Input Customer Name"
                         onChange={handleChange}
                       />
@@ -159,8 +162,8 @@ const FormOrder = () => {
                       <input
                         className="form-control"
                         type="tel"
-                        id="telephone"
-                        name="telephone"
+                        id="no_tlp"
+                        name="no_tlp"
                         onChange={handleChange}
                       />
                     </div>
@@ -176,9 +179,8 @@ const FormOrder = () => {
                       <input
                         className="form-control"
                         type="datetime-local"
-                        // id="example-datetime-local-input"
-                        id="date_time"
-                        name="date_time"
+                        id="req_date_order"
+                        name="req_date_order"
                         onChange={handleChange}
                       />
                     </div>
@@ -188,8 +190,6 @@ const FormOrder = () => {
                     <div className="col-md-4">
                       <select className="form-control" disabled>
                         <option>Select</option>
-                        <option>Large select</option>
-                        <option>Small select</option>
                       </select>
                     </div>
                     <div className="col-md-4">
@@ -208,16 +208,19 @@ const FormOrder = () => {
                   {formElements.map((element, index) => (
                     <Row className="mb-3" key={index}>
                       <div className="col-md-4 offset-md-2">
-                        <select 
+                      <select 
                         className="form-control" 
-                        name="selectValue"
-                        value={element.selectValue}
+                        type="select"
+                        name="menu_id"
+                        value={formData.orderItems[index].menu_id}
                         onChange={(e) => handleOrderItemChange(index, e)}>
-                        <option>Select</option>
+                        <option value="">Select</option>
                         {dataMenu.map((menu) => (
-                            <option key={menu.menu_id} value={menu.menu_id}>{menu.menu_name}</option>
+                            <option key={menu.menu_id} value={menu.menu_id}>
+                              {menu.menu_name}
+                            </option>
                         ))}
-                        </select>
+                      </select>
                       </div>
                       <div className="col-md-4">
                         <input
@@ -225,7 +228,7 @@ const FormOrder = () => {
                           type="text"
                           name="quantity"
                           placeholder="Input Quantity"
-                          value={element.quantity}
+                          value={formData.orderItems[index].quantity}
                           onChange={(e) => handleOrderItemChange(index, e)}
                         />
                       </div>

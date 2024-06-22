@@ -17,7 +17,7 @@ export const GET_EVENTS = "/events";
 export const ADD_NEW_EVENT = "/add/event";
 export const UPDATE_EVENT = "/update/event";
 export const DELETE_EVENT = "/delete/event";
-export const GET_CATEGORIES = "/categories";
+export const GET_CATEGORIES = "/categories";    
 
 // TABLES
 export const GET_MENUS = "/menus"
@@ -28,3 +28,7 @@ export const GET_TRANSACTION = "/transaction"
 export const GET_LATEST_TRANSACTION = "/order/latest-order"
 export const GET_CARD_INFORMATION = "/dash/card-information"
 
+//Form 
+export const POST_ORDER = "/order"
+
+    
