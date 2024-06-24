@@ -79,7 +79,7 @@ const FormOrder = () => {
 
   const submitOrder = () => {
     console.log(formData)
-    api.create(BASE_URL + url.POST_ORDER, formData).then((res) => console.log(res))
+    api.create(BASE_URL + url.POST_ORDER, formData).then((res) => window.location.reload())
     // fetch("https://your-server-endpoint/api/orders", {
     //   method: "POST",
     //   headers: {

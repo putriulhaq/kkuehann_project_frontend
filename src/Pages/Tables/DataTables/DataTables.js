@@ -13,7 +13,7 @@ const DataTables = () => {
                         <Col lg={12}>
                             <Card>
                                 <CardHeader>
-                                    <h5 className="card-title mb-0">Basic Datatables</h5>
+                                    <h5 className="card-title mb-0">Menu Datatables</h5>
                                 </CardHeader>
                                 <CardBody>
                                     <BasicTable />

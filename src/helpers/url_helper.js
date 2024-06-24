@@ -30,5 +30,6 @@ export const GET_CARD_INFORMATION = "/dash/card-information"
 
 //Form 
 export const POST_ORDER = "/order"
+export const GET_ORDER = "/order"
 
     

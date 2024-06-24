@@ -111,7 +111,8 @@ const SidebarData = [
         subItem: [
             { sublabel: "Basic Tables", link: "/tables-basic" },
             { sublabel: "List Js", link: "/tables-listjs" },
-            { sublabel: "React Datatables", link: "/table-datatables" },
+            { sublabel: "Order Status", link: "/tables-order-status" },
+            { sublabel: "Menu", link: "/table-menu" },
         ],
     },
     {
