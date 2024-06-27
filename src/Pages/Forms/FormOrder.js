@@ -81,19 +81,6 @@ const FormOrder = () => {
     console.log(formData)
     api.create(BASE_URL + url.POST_ORDER, formData).then((res) => window.location.reload())
     // fetch("https://your-server-endpoint/api/orders", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(formData),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("Success:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
   };
 
   useEffect(() => {

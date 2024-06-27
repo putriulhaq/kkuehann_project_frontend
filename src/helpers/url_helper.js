@@ -23,7 +23,6 @@ export const GET_CATEGORIES = "/categories";
 export const GET_MENUS = "/menus"
 export const GET_TRANSACTION = "/transaction"
 
-
 // Dashboard
 export const GET_LATEST_TRANSACTION = "/order/latest-order"
 export const GET_CARD_INFORMATION = "/dash/card-information"
@@ -31,5 +30,9 @@ export const GET_CARD_INFORMATION = "/dash/card-information"
 //Form 
 export const POST_ORDER = "/order"
 export const GET_ORDER = "/order"
+
+//menu apis
+export const POST_MENU = "/menus"
+export const DELETED_MENU = "/menus"
 
     

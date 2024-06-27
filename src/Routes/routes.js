@@ -73,11 +73,12 @@ import FormValidations from "../Pages/Forms/FormValidations";
 import FormWizard from "../Pages/Forms/FormWizard";
 
 // Import Tables
-import BasicTable from "../Pages/Tables/BasicTable.js";
+import BasicTable from "../Pages/Tables/BasicTable";
 import ListJs from "../Pages/Tables/ListTables/ListTables";
-import OrderStatusTables from "../Pages/Tables/ListTables/OrderStatusTables.js";
+import OrderStatusTables from "../Pages/Tables/ListTables/OrderStatusTables";
+import MenuTables from "../Pages/Tables/ListTables/MenuTables";
 import DataTable from "../Pages/Tables/DataTables/DataTables";
-import Transaction from "../Pages/Tables/DataTables/Transaction.js";
+import Transaction from "../Pages/Tables/DataTables/Transaction";
 
 
 // Import Charts
@@ -159,7 +160,7 @@ const authProtectedRoutes = [
   { path: "/tables-basic", component: <BasicTable /> },
   { path: "/tables-listjs", component: <ListJs /> },
   { path: "/tables-order-status", component: <OrderStatusTables /> },
-  { path: "/table-menu", component: <DataTable /> },
+  { path: "/table-menu", component: <MenuTables /> },
   { path: "/table-transaction", component: <Transaction /> },
 
   // Charts Pages
