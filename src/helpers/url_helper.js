@@ -34,5 +34,6 @@ export const GET_ORDER = "/order"
 //menu apis
 export const POST_MENU = "/menus"
 export const DELETED_MENU = "/menus"
+export const UPDATE_MENU = "/menus/update"
 
     

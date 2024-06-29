@@ -14,33 +14,45 @@ const BASE_URL = "http://127.0.0.1:5000"
 const MenuTables = () => {
     document.title = "Menus | KKUEHANN";
     const [data, setData] = useState([]);
-    const [deleteId, setDeletedId] = useState(null)
+    const [deleteId, setDeletedId] = useState(null);
+    const [editMode, setEditMode] = useState(false);
     const [formData, setFormData] = useState({
         menu_name: "",
         priceist: "",
         description: "",
-      });
+    });
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
           ...formData,
           [name]: value,
         });
-        console.log(value)
-      };
+    };
 
-      const api = new APIClient()
+    const api = new APIClient();
 
-      const submitMenu = (e) => {
+    const submitMenu = (e) => {
         e.preventDefault();
-        console.log(formData);
-        api.create(BASE_URL + url.POST_MENU, formData)
-            .then((res) => {
-                console.log(res);
-                fetchData(); // Fetch the updated data
-                setmodal_list(false); // Close the modal
-            })
-            .catch((error) => console.error('Error:', error));
+        if (editMode) {
+            // Update existing menu
+            api.update(`${BASE_URL}${url.UPDATE_MENU}/${formData.menu_id}`, formData)
+                .then((res) => {
+                    fetchData(); // Fetch the updated data
+                    setmodal_list(false); // Close the modal
+                    setEditMode(false); // Reset edit mode
+                })
+                .catch((error) => console.error('Error:', error));
+        } else {
+            console.log(url.POST_MENU)
+            // Create new menu
+            api.create(BASE_URL + url.POST_MENU, formData)
+                .then((res) => {
+                    fetchData(); // Fetch the updated data
+                    setmodal_list(false); // Close the modal
+                })
+                .catch((error) => console.error('Error:', error));
+        }
     };
 
     const fetchData = async () => {
@@ -53,35 +65,35 @@ const MenuTables = () => {
     };
 
     const tog_delete = (id) => {
-        // setDeletedId(id); // Set ID menu yang akan dihapus
-        // deletedData(id)
         setmodal_delete(!modal_delete);
     };
 
     const deletedData = async (id) => {
         try {
             setDeletedId(id)
-            const response = await api.update(`${BASE_URL}${url.GET_MENUS}/${id}`).then((res) => setData(res));
-            // setData(response);
-            fetchData()
+            const response = await api.delete(`${BASE_URL}${url.GET_MENUS}/${id}`).then((res) => setData(res));
+            fetchData();
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
     const [modal_list, setmodal_list] = useState(false);
-    function tog_list() {
+    const tog_list = () => {
         setmodal_list(!modal_list);
-    }
+    };
 
     const [modal_delete, setmodal_delete] = useState(false);
-    // function tog_delete() {
-    //     setmodal_delete(!modal_delete);
-    // }
 
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, []);
+
+    const handleEditClick = (menu) => {
+        setFormData(menu);
+        setEditMode(true);
+        tog_list();
+    };
 
     return (
         <React.Fragment>
@@ -92,19 +104,13 @@ const MenuTables = () => {
                     <Row>
                         <Col lg={12}>
                             <Card>
-                                {/* <CardHeader>
-                                    <h4 className="card-title mb-0">Order Tables</h4>
-                                </CardHeader> */}
-
                                 <CardBody>
                                     <div id="customerList">
                                         <Row className="g-4 mb-3">
                                             <Col className="col-sm-auto">
                                                 <div className="d-flex gap-1">
-                                                    <Button color="success" className="add-btn" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
-                                                    <Button color="soft-danger"
-                                                    // onClick="deleteMultiple()"
-                                                    ><i className="ri-delete-bin-2-line"></i></Button>
+                                                    <Button color="success" className="add-btn" onClick={() => { setEditMode(false); tog_list(); }} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
+                                                    {/* <Button color="soft-danger"><i className="ri-delete-bin-2-line"></i></Button> */}
                                                 </div>
                                             </Col>
                                             <Col className="col-sm">
@@ -126,11 +132,9 @@ const MenuTables = () => {
                                                                 <input className="form-check-input" type="checkbox" id="checkAll" value="option" />
                                                             </div>
                                                         </th>
-                                                        {/* <th className="sort" data-sort="menu_id">Menu ID</th> */}
                                                         <th className="sort" data-sort="menu_name">Menu Name</th>
-                                                        <th className="sort" data-sort="pricelist">Pricelist</th>
+                                                        <th className="sort" data-sort="priceist">priceist</th>
                                                         <th className="sort" data-sort="description">Description</th>
-                                                        {/* <th className="sort" data-sort="status">Delivery Status</th> */}
                                                         <th className="sort" data-sort="action">Action</th>
                                                     </tr>
                                                 </thead>
@@ -142,17 +146,14 @@ const MenuTables = () => {
                                                                 <input className="form-check-input" type="checkbox" name="chk_child" value="option1" />
                                                             </div>
                                                         </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
-                                                        {/* <td className="menu_id">{data.menu_id}</td> */}
                                                         <td className="menu_name">{data.menu_name}</td>
-                                                        <td className="pricelist">{data.pricelist}</td>
+                                                        <td className="priceist">{data.pricelist}</td>
                                                         <td className="description">{data.description}</td>
-                                                        {/* <td className="status"><span className="badge badge-soft-success text-uppercase">{data.order_status_name ? data.order_status_name : '-'}</span></td> */}
                                                         <td>
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">
                                                                     <button className="btn btn-sm btn-success edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                                        onClick={() => handleEditClick(data)}>Edit</button>
                                                                 </div>
                                                                 <div className="remove">
                                                                     <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" data-id={data.menu_id} onClick={() => deletedData(data.menu_id)}>Remove</button>
@@ -195,36 +196,35 @@ const MenuTables = () => {
                 </Container>
             </div>
 
-            {/* Add Modal */}
+            {/* Add/Edit Modal */}
             <Modal isOpen={modal_list} toggle={() => { tog_list(); }} centered >
-                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> Add Menu </ModalHeader>
+                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> {editMode ? "Edit Menu" : "Add Menu"} </ModalHeader>
                 <form className="tablelist-form" onSubmit={submitMenu}>
                     <ModalBody>
                         <div className="mb-3" id="modal-id" style={{ display: "none" }}>
                             <label htmlFor="id-field" className="form-label">ID</label>
-                            <input type="text" id="id-field" className="form-control" placeholder="ID" readOnly />
+                            <input type="text" id="id-field" className="form-control" placeholder="ID" readOnly value={formData.menu_id || ''} />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="customername-field" className="form-label">Menu Name</label>
-                            <input type="text" id="menu_name" name='menu_name' onChange={handleChange} className="form-control" placeholder="Enter Name" required />
+                            <label htmlFor="menu_name" className="form-label">Menu Name</label>
+                            <input type="text" id="menu_name" name='menu_name' onChange={handleChange} className="form-control" placeholder="Enter Name" value={formData.menu_name || ''} required />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="email-field" className="form-label">Prices</label>
-                            <input type="number" id="priceist" name='priceist' onChange={handleChange} className="form-control" placeholder="Enter Prices" required />
+                            <label htmlFor="priceist" className="form-label">Prices</label>
+                            <input type="number" id="priceist" name='priceist' onChange={handleChange} className="form-control" placeholder="Enter Prices" value={formData.priceist || ''} required />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="phone-field" className="form-label">Description</label>
-                            <input type="text" id="description" name='description' onChange={handleChange} className="form-control" placeholder="Enter Description" required />
+                            <label htmlFor="description" className="form-label">Description</label>
+                            <input type="text" id="description" name='description' onChange={handleChange} className="form-control" placeholder="Enter Description" value={formData.description || ''} required />
                         </div>
                     </ModalBody>
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Close</button>
-                            <button type="submit" className="btn btn-success" id="add-btn" onSubmit={submitMenu}>Add Menu</button>
-                            {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
+                            <button type="submit" className="btn btn-success" id={editMode ? "edit-btn" : "add-btn"}>{editMode ? "Update" : "Add"} Menu</button>
                         </div>
                     </ModalFooter>
                 </form>
@@ -246,7 +246,7 @@ const MenuTables = () => {
                     </div>
                     <div className="d-flex gap-2 justify-content-center mt-4 mb-2">
                         <button type="button" className="btn w-sm btn-light" onClick={() => setmodal_delete(false)}>Close</button>
-                        <button type="button" className="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
+                        <button type="button" className="btn w-sm btn-danger " id="delete-record" onClick={() => deletedData(deleteId)}>Yes, Delete It!</button>
                     </div>
                 </ModalBody>
             </Modal>
