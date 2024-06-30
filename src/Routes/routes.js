@@ -97,6 +97,7 @@ import IconBoxicons from "../Pages/Icons/IconBoxicons"
 // Import Map Pages
 import VectorMaps from "../Pages/Maps/VectorMap";
 import GoogleMap from "../Pages/Maps/GoogleMap";
+import TransactionTables from "../Pages/Tables/ListTables/TransactionTables";
 
 
 const authProtectedRoutes = [
@@ -161,7 +162,7 @@ const authProtectedRoutes = [
   { path: "/tables-listjs", component: <ListJs /> },
   { path: "/tables-order-status", component: <OrderStatusTables /> },
   { path: "/table-menu", component: <MenuTables /> },
-  { path: "/table-transaction", component: <Transaction /> },
+  { path: "/table-transaction", component: <TransactionTables /> },
 
   // Charts Pages
   { path: "/chart-apexcharts", component: <ApexCharts /> },

@@ -95,24 +95,25 @@ const SidebarData = [
         badgeValue: "8",
         subItem: [
             { sublabel: "Form Order", link: "/form-orders" },
-            { sublabel: "Form Elements", link: "/form-elements" },
-            { sublabel: "Form Validation", link: "/form-validation" },
-            { sublabel: "Form Advanced Plugins", link: "/form-advanced" },
-            { sublabel: "Form Editor", link: "/form-editor" },
-            { sublabel: "Form File Upload", link: "/form-uploads" },
-            { sublabel: "Form X-editable", link: "/form-editors" },
-            { sublabel: "Form Wizard", link: "/form-wizard" },
-            { sublabel: "Form Mask", link: "/form-mask" },
+            // { sublabel: "Form Elements", link: "/form-elements" },
+            // { sublabel: "Form Validation", link: "/form-validation" },
+            // { sublabel: "Form Advanced Plugins", link: "/form-advanced" },
+            // { sublabel: "Form Editor", link: "/form-editor" },
+            // { sublabel: "Form File Upload", link: "/form-uploads" },
+            // { sublabel: "Form X-editable", link: "/form-editors" },
+            // { sublabel: "Form Wizard", link: "/form-wizard" },
+            // { sublabel: "Form Mask", li  nk: "/form-mask" },
         ],
     },
     {
         label: "Tables",
         icon: "ri-table-2",
         subItem: [
-            { sublabel: "Basic Tables", link: "/tables-basic" },
-            { sublabel: "List Js", link: "/tables-listjs" },
+            // { sublabel: "Basic Tables", link: "/tables-basic" },
+            // { sublabel: "List Js", link: "/tables-listjs" },
             { sublabel: "Order Status", link: "/tables-order-status" },
             { sublabel: "Menu", link: "/table-menu" },
+            { sublabel: "Transaction", link: "/table-transaction" },
         ],
     },
     {
@@ -126,37 +127,37 @@ const SidebarData = [
             { sublabel: "Sparkline Charts", link: "/chart-sparklinecharts" },
         ],
     },
-    {
-        label: "Icons",
-        icon: "ri-brush-line",
-        subItem: [
-            { sublabel: "Box Icons", link: "/icon-boxicon" },
-            { sublabel: "Material Design", link: "/icons-materialdesign" },
-            { sublabel: "Dripicons", link: "/icon-dripicons" },
-            { sublabel: "Font Awesome", link: "/icons-fontawesome" },
-        ],
-    },
-    {
-        label: "Maps",
-        icon: "ri-map-pin-line",
-        subItem: [
-            { sublabel: "Google Maps", link: "/maps-google" },
-            { sublabel: "Vector Maps", link: "/maps-vector" },
-        ],
-    },
-    {
-        label: "Multi Level",
-        icon: "ri-share-line",
-        subItem: [
-            { sublabel: "Level 1.1", link: "/#" },
-            {
-                sublabel: "Level 1.2", link: "/#",
-                subMenu: [
-                    { title: "Level 2.1" },
-                    { title: "Level 2.2" },
-                ],
-            },
-        ],
-    },
+    // {
+    //     label: "Icons",
+    //     icon: "ri-brush-line",
+    //     subItem: [
+    //         { sublabel: "Box Icons", link: "/icon-boxicon" },
+    //         { sublabel: "Material Design", link: "/icons-materialdesign" },
+    //         { sublabel: "Dripicons", link: "/icon-dripicons" },
+    //         { sublabel: "Font Awesome", link: "/icons-fontawesome" },
+    //     ],
+    // },
+    // {
+    //     label: "Maps",
+    //     icon: "ri-map-pin-line",
+    //     subItem: [
+    //         { sublabel: "Google Maps", link: "/maps-google" },
+    //         { sublabel: "Vector Maps", link: "/maps-vector" },
+    //     ],
+    // },
+    // {
+    //     label: "Multi Level",
+    //     icon: "ri-share-line",
+    //     subItem: [
+    //         { sublabel: "Level 1.1", link: "/#" },
+    //         {
+    //             sublabel: "Level 1.2", link: "/#",
+    //             subMenu: [
+    //                 { title: "Level 2.1" },
+    //                 { title: "Level 2.2" },
+    //             ],
+    //         },
+    //     ],
+    // },
 ]
 export default SidebarData;
