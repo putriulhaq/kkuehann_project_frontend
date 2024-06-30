@@ -36,4 +36,8 @@ export const POST_MENU = "/menus"
 export const DELETED_MENU = "/menus"
 export const UPDATE_MENU = "/menus/update"
 
+
+//oorder apis
+export const UPDATE_ORDERSTATUS = "/order/edit-status"
+
     

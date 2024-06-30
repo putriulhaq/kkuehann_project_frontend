@@ -14,8 +14,16 @@ const api = new APIClient()
 const BASE_URL = "http://127.0.0.1:5000"
 
 const OrderStatusTables = () => {
-
     const [modal_list, setmodal_list] = useState(false);
+    const [orders, setOrders] = useState([]);
+    const[editMode, setEditMode] = useState(false)
+    const [formData, setFormData] = useState({
+        address_order: "",
+        order_status: "",
+        cust_name:""
+    });
+
+
     function tog_list() {
         setmodal_list(!modal_list);
     }
@@ -25,10 +33,36 @@ const OrderStatusTables = () => {
         setmodal_delete(!modal_delete);
     }
 
-    const [orders, setOrders] = useState([]);
 
     const fetchData = () => {
         api.get(BASE_URL+ url.GET_ORDER).then(data => setOrders(data))
+    }
+
+    const submitOrder = (e) => {
+        e.preventDefault()
+        console.log(formData.order_status)
+        api.update(`${BASE_URL}${url.UPDATE_ORDERSTATUS}/${formData.order_detail_id}`, formData).then((res) => {
+            fetchData(); // Fetch the updated data
+            setmodal_list(false); // Close the modal
+            setEditMode(false); // Reset edit mode
+        })
+        .catch((error) => console.error('Error:', error));
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value,
+        });
+
+    }
+
+    const handleEditClick = (data) => {
+        console.log(data)
+        setFormData(data)
+        setEditMode(true)
+        tog_list();
     }
 
     useEffect(() => {
@@ -53,10 +87,10 @@ const OrderStatusTables = () => {
                                         <Row className="g-4 mb-3">
                                             <Col className="col-sm-auto">
                                                 <div className="d-flex gap-1">
-                                                    <Button color="success" className="add-btn" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button>
-                                                    <Button color="soft-danger"
+                                                    {/* <Button color="success" className="add-btn" onClick={() => tog_list()} id="create-btn"><i className="ri-add-line align-bottom me-1"></i> Add</Button> */}
+                                                    {/* <Button color="soft-danger"
                                                     // onClick="deleteMultiple()"
-                                                    ><i className="ri-delete-bin-2-line"></i></Button>
+                                                    ><i className="ri-delete-bin-2-line"></i></Button> */}
                                                 </div>
                                             </Col>
                                             <Col className="col-sm">
@@ -79,10 +113,10 @@ const OrderStatusTables = () => {
                                                             </div>
                                                         </th>
                                                         <th className="sort" data-sort="customer_name">Customer</th>
-                                                        <th className="sort" data-sort="email">Email</th>
+                                                        <th className="sort" data-sort="email">Address Order</th>
                                                         <th className="sort" data-sort="phone">Phone</th>
-                                                        <th className="sort" data-sort="date">Joining Date</th>
-                                                        <th className="sort" data-sort="status">Delivery Status</th>
+                                                        <th className="sort" data-sort="date">Request Date</th>
+                                                        <th className="sort" data-sort="status">Order Status</th>
                                                         <th className="sort" data-sort="action">Action</th>
                                                     </tr>
                                                 </thead>
@@ -96,7 +130,7 @@ const OrderStatusTables = () => {
                                                         </th>
                                                         <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
                                                         <td className="customer_name">{data.cust_name}</td>
-                                                        <td className="email">marycousar@velzon.com</td>
+                                                        <td className="email">{data.address_order}</td>
                                                         <td className="phone">{data.no_tlp}</td>
                                                         <td className="date">{data.req_date_order}</td>
                                                         <td className="status"><span className="badge badge-soft-success text-uppercase">{data.order_status_name ? data.order_status_name : '-'}</span></td>
@@ -104,7 +138,7 @@ const OrderStatusTables = () => {
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">
                                                                     <button className="btn btn-sm btn-success edit-item-btn"
-                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                                        data-bs-toggle="modal" data-bs-target="#showModal" onClick={() => handleEditClick(data)}>Edit</button>
                                                                 </div>
                                                                 <div className="remove">
                                                                     <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
@@ -149,53 +183,38 @@ const OrderStatusTables = () => {
 
             {/* Add Modal */}
             <Modal isOpen={modal_list} toggle={() => { tog_list(); }} centered >
-                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> Add Customer </ModalHeader>
-                <form className="tablelist-form">
+                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> Edit Order </ModalHeader>
+                <form className="tablelist-form" onSubmit={submitOrder}>
                     <ModalBody>
                         <div className="mb-3" id="modal-id" style={{ display: "none" }}>
                             <label htmlFor="id-field" className="form-label">ID</label>
-                            <input type="text" id="id-field" className="form-control" placeholder="ID" readOnly />
+                            <input type="text" id="id-field" className="form-control" placeholder="ID" value={handleChange} readOnly />
                         </div>
 
                         <div className="mb-3">
                             <label htmlFor="customername-field" className="form-label">Customer Name</label>
-                            <input type="text" id="customername-field" className="form-control" placeholder="Enter Name" required />
+                            <input type="text" id="customername-field" className="form-control" name='cust_name' placeholder="Enter Name" onChange={handleChange} value={formData.cust_name} required readOnly/>
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="email-field" className="form-label">Email</label>
-                            <input type="email" id="email-field" className="form-control" placeholder="Enter Email" required />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="phone-field" className="form-label">Phone</label>
-                            <input type="text" id="phone-field" className="form-control" placeholder="Enter Phone no." required />
-                        </div>
-
-                        <div className="mb-3">
-                            <label htmlFor="date-field" className="form-label">Joining Date</label>
-                            <Flatpickr
-                                className="form-control"
-                                options={{
-                                    dateFormat: "d M, Y"
-                                }}
-                                placeholder="Select Date"
-                            />
+                            <label htmlFor="email-field" className="form-label">Address</label>
+                            <input type="text" id="email-field" className="form-control" placeholder="Enter Address" name='address_order' onChange={handleChange} required value={formData.address_order}/>
                         </div>
 
                         <div>
                             <label htmlFor="status-field" className="form-label">Status</label>
-                            <select className="form-control" data-trigger name="status-field" id="status-field" >
+                            <select className="form-control" data-trigger name="order_status" id="status-field" onChange={handleChange} value={formData.order_status} >
                                 <option value="">Status</option>
-                                <option value="Active">Active</option>
-                                <option value="Block">Block</option>
+                                <option value="005001">Completed</option>
+                                <option value="005002">Cancel</option>
+                                <option value="005003">Pending</option>
                             </select>
                         </div>
                     </ModalBody>
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Close</button>
-                            <button type="submit" className="btn btn-success" id="add-btn">Add Customer</button>
+                            <button type="submit" className="btn btn-success" id="add-btn">Edit Order Status</button>
                             {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
                         </div>
                     </ModalFooter>

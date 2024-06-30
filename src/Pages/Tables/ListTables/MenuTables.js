@@ -44,7 +44,6 @@ const MenuTables = () => {
                 })
                 .catch((error) => console.error('Error:', error));
         } else {
-            console.log(url.POST_MENU)
             // Create new menu
             api.create(BASE_URL + url.POST_MENU, formData)
                 .then((res) => {
@@ -99,7 +98,7 @@ const MenuTables = () => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <Breadcrumbs title="Tables" breadcrumbItem="Order Tables" />
+                    <Breadcrumbs title="Tables" breadcrumbItem="Menu Tables" />
 
                     <Row>
                         <Col lg={12}>
@@ -133,7 +132,7 @@ const MenuTables = () => {
                                                             </div>
                                                         </th>
                                                         <th className="sort" data-sort="menu_name">Menu Name</th>
-                                                        <th className="sort" data-sort="priceist">priceist</th>
+                                                        <th className="sort" data-sort="priceist">Pricelist</th>
                                                         <th className="sort" data-sort="description">Description</th>
                                                         <th className="sort" data-sort="action">Action</th>
                                                     </tr>
