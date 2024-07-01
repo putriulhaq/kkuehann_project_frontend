@@ -126,11 +126,12 @@ const MenuTables = () => {
                                             <table className="table align-middle table-nowrap" id="customerTable">
                                                 <thead className="table-light">
                                                     <tr>
-                                                        <th scope="col" style={{ width: "50px" }}>
+                                                        {/* <th scope="col" style={{ width: "50px" }}>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" id="checkAll" value="option" />
                                                             </div>
-                                                        </th>
+                                                        </th> */}
+                                                        <th className="sort" data-sort="menu_name">No</th>
                                                         <th className="sort" data-sort="menu_name">Menu Name</th>
                                                         <th className="sort" data-sort="priceist">Pricelist</th>
                                                         <th className="sort" data-sort="description">Description</th>
@@ -140,11 +141,12 @@ const MenuTables = () => {
                                                 <tbody className="list form-check-all">
                                                 {Array.isArray(data) && data.map((data, index) => (
                                                     <tr key={index}> 
-                                                        <th scope="row">
+                                                        {/* <th scope="row">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" name="chk_child" value="option1" />
                                                             </div>
-                                                        </th>
+                                                        </th> */}
+                                                        <td className="menu_name">{index + 1}</td>
                                                         <td className="menu_name">{data.menu_name}</td>
                                                         <td className="priceist">{data.pricelist}</td>
                                                         <td className="description">{data.description}</td>

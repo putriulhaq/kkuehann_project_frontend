@@ -65,6 +65,19 @@ const OrderStatusTables = () => {
         tog_list();
     }
 
+    const getStatusColorClass = (status) => {
+        switch (status) {
+            case "005001":
+                return "badge-soft-success"; // Completed
+            case "005002":
+                return "badge-soft-danger"; // Cancel
+            case "005003":
+                return "badge-soft-warning"; // Pending
+            default:
+                return "badge-soft-secondary";
+        }
+    };
+
     useEffect(() => {
         fetchData()
     }, []);
@@ -107,11 +120,12 @@ const OrderStatusTables = () => {
                                             <table className="table align-middle table-nowrap" id="customerTable">
                                                 <thead className="table-light">
                                                     <tr>
-                                                        <th scope="col" style={{ width: "50px" }}>
+                                                        {/* <th scope="col" style={{ width: "50px" }}>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" id="checkAll" value="option" />
                                                             </div>
-                                                        </th>
+                                                        </th> */}
+                                                        <th className="sort" data-sort="customer_name">No</th>
                                                         <th className="sort" data-sort="customer_name">Customer</th>
                                                         <th className="sort" data-sort="email">Address Order</th>
                                                         <th className="sort" data-sort="phone">Phone</th>
@@ -123,17 +137,18 @@ const OrderStatusTables = () => {
                                                 <tbody className="list form-check-all">
                                                     {orders.map((data,index) => (
                                                     <tr key={index}> 
-                                                        <th scope="row">
+                                                        {/* <th scope="row">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" name="chk_child" value="option1" />
                                                             </div>
                                                         </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
+                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td> */}
+                                                        <td className="customer_name">{index + 1}</td>
                                                         <td className="customer_name">{data.cust_name}</td>
                                                         <td className="email">{data.address_order}</td>
                                                         <td className="phone">{data.no_tlp}</td>
                                                         <td className="date">{data.req_date_order}</td>
-                                                        <td className="status"><span className="badge badge-soft-success text-uppercase">{data.order_status_name ? data.order_status_name : '-'}</span></td>
+                                                        <td className="status"><span className={`badge ${getStatusColorClass(data.order_status)} text-uppercase`}>{data.order_status_name ? data.order_status_name : '-'}</span></td>
                                                         <td>
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">

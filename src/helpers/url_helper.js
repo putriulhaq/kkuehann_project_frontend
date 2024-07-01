@@ -40,4 +40,7 @@ export const UPDATE_MENU = "/menus/update"
 //oorder apis
 export const UPDATE_ORDERSTATUS = "/order/edit-status"
 
+//transaction
+export const UPDATE_TRANSACTION = "/transaction/edit-transaction"
+
     

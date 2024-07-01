@@ -40,8 +40,8 @@ const TransactionTables = () => {
 
     const submitOrder = (e) => {
         e.preventDefault()
-        console.log(formData.order_status)
-        api.update(`${BASE_URL}${url.UPDATE_ORDERSTATUS}/${formData.order_detail_id}`, formData).then((res) => {
+        console.log(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`)
+        api.update(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`, formData).then((res) => {
             fetchData(); // Fetch the updated data
             setmodal_list(false); // Close the modal
             setEditMode(false); // Reset edit mode
@@ -107,11 +107,12 @@ const TransactionTables = () => {
                                             <table className="table align-middle table-nowrap" id="customerTable">
                                                 <thead className="table-light">
                                                     <tr>
-                                                        <th scope="col" style={{ width: "50px" }}>
+                                                        {/* <th scope="col" style={{ width: "50px" }}>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" id="checkAll" value="option" />
                                                             </div>
-                                                        </th>
+                                                        </th> */}
+                                                        <th className="sort" data-sort="customer_name">No</th>
                                                         <th className="sort" data-sort="customer_name">Customer</th>
                                                         <th className="sort" data-sort="email">Transaction Type</th>
                                                         <th className="sort" data-sort="email">Transaction To</th>
@@ -122,12 +123,13 @@ const TransactionTables = () => {
                                                 <tbody className="list form-check-all">
                                                     {orders.map((data,index) => (
                                                     <tr key={index}> 
-                                                        <th scope="row">
+                                                        {/* <th scope="row">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="checkbox" name="chk_child" value="option1" />
                                                             </div>
-                                                        </th>
-                                                        <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td>
+                                                        </th> */}
+                                                        {/* <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td> */}
+                                                        <td className="No">{index + 1}</td>
                                                         <td className="customer_name">{data.cust_name}</td>
                                                         <td className="customer_name">{data.transaction_type_name}</td>
                                                         <td className="email">{data.transaction_to_name}</td>
