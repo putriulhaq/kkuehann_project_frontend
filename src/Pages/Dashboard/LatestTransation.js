@@ -22,28 +22,24 @@ const LatestTransation = () => {
 
                                     <thead>
                                         <tr>
+                                            <th scope="col">No</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Status</th>
+                                            <th scope="col">Status Order</th>
+                                            <th scope="col">Status Payment</th>
                                             <th scope="col">Date</th>
-                                            <th scope="col">Action</th>
+                                            {/* <th scope="col">Action</th> */}
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {data_latest.map((item, key) => (
                                             <tr key={key}>
+                                            <td>{key + 1}</td>
                                             <td>{item.cust_name}</td>
                                             <td>Rp. {item.total}</td>
-                                            <td>{item.quantity}</td>
-                                            <td>
-                                                <i className={"mdi mdi-checkbox-blank-circle me-1 text-" + item.color}></i> {item.order_status}
-                                            </td>
+                                            <td>{item.order_status}</td>
+                                            <td>{item.transaction_status}</td>
                                             <td>{item.req_date_order}</td>
-                                            <td>
-                                                <button type="button" className="btn btn-outline-success btn-sm me-1">Edit</button>
-                                                <button type="button" className="btn btn-outline-danger btn-sm me-1">Cancel</button>
-                                            </td>
                                         </tr>))}
                                     </tbody>
                                 </table>
