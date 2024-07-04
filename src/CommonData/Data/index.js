@@ -9,8 +9,6 @@ import {
 
 import {calenderDefaultCategories, events} from "./calender";
 
-
-console.log(LatestTransactionData)
 export {
   LatestTransactionData,
   CardInformationData,

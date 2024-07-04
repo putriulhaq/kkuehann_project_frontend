@@ -153,6 +153,10 @@ const OrderStatusTables = () => {
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">
                                                                     <button className="btn btn-sm btn-success edit-item-btn"
+                                                                        data-bs-toggle="modal" data-bs-target="#showModal">Detail</button>
+                                                                </div>
+                                                                <div className="edit">
+                                                                    <button className="btn btn-sm btn-warning edit-item-btn"
                                                                         data-bs-toggle="modal" data-bs-target="#showModal" onClick={() => handleEditClick(data)}>Edit</button>
                                                                 </div>
                                                                 <div className="remove">

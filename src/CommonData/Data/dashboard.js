@@ -35,17 +35,6 @@ const CardInformationData = () => {
     return card_information
     }
 
-// const CardInformationData = () => {
-//     const [card_information, set_data_card] = useState([])
-//     const fetchData = () => {
-//         api.get(BASE_URL+ url.GET_CARD_INFORMATION).then(data => set_data_card(data))
-//     }
-//     useEffect(() => {
-//         fetchData()
-//     }, []);
-//     return card_information
-//     }
-
 
 const OrderStatusData = [
     {
