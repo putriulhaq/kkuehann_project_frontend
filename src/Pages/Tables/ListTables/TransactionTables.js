@@ -199,7 +199,7 @@ const TransactionTables = () => {
                         <div>
                             <label htmlFor="status-field" className="form-label">Type</label>
                             <select className="form-control" data-trigger name="transaction_type" id="transaction_type" onChange={handleChange} value={formData.transaction_type} >
-                                <option value="">Type</option>
+                                <option value="" disabled>Type</option>
                                 <option value="002001">Tunai</option>
                                 <option value="002002">Non Tunai</option>
                             </select>
@@ -208,7 +208,7 @@ const TransactionTables = () => {
                         <div>
                             <label htmlFor="status-field" className="form-label">To</label>
                             <select className="form-control" data-trigger name="transaction_to" id="status-field" onChange={handleChange} value={formData.transaction_to} >
-                                <option value="">To</option>
+                                <option value=""disabled>To</option>
                                 <option value="004001">BNI</option>
                                 <option value="004002">BCA</option>
                             </select>
@@ -217,7 +217,7 @@ const TransactionTables = () => {
                         <div>
                             <label htmlFor="status-field" className="form-label">Status</label>
                             <select className="form-control" data-trigger name="transaction_status" id="status-field" onChange={handleChange} value={formData.transaction_status} >
-                                <option value="">Status</option>
+                                <option value="" disabled>Status</option>
                                 <option value="003001">Success</option>
                                 <option value="003002">Not Yet</option>
                             </select>
