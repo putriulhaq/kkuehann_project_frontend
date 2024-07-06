@@ -299,6 +299,7 @@ const [selectedOrder, setSelectedOrder] = useState(null);
                                 <li key={index} style={{ marginBottom: '5px' }}>{item}: {selectedOrder.quantity[index]}</li>
                             ))}
                         </ul>
+                        <p><strong>Total: </strong> {selectedOrder.total}</p>
                     </div>
                 )}
             </ModalBody>

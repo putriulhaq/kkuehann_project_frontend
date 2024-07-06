@@ -140,9 +140,9 @@ const TransactionTables = () => {
                                                                     <button className="btn btn-sm btn-success edit-item-btn"
                                                                         data-bs-toggle="modal" data-bs-target="#showModal" onClick={() => handleEditClick(data)}>Edit</button>
                                                                 </div>
-                                                                <div className="remove">
+                                                                {/* <div className="remove">
                                                                     <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal">Remove</button>
-                                                                </div>
+                                                                </div> */}
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -234,7 +234,7 @@ const TransactionTables = () => {
             </Modal>
 
             {/* Remove Modal */}
-            <Modal isOpen={modal_delete} toggle={() => { tog_delete(); }} className="modal fade zoomIn" id="deleteRecordModal" centered >
+            {/* <Modal isOpen={modal_delete} toggle={() => { tog_delete(); }} className="modal fade zoomIn" id="deleteRecordModal" centered >
                 <div className="modal-header">
                     <Button type="button" onClick={() => setmodal_delete(false)} className="btn-close" aria-label="Close"> </Button>
                 </div>
@@ -252,7 +252,7 @@ const TransactionTables = () => {
                         <button type="button" className="btn w-sm btn-danger " id="delete-record">Yes, Delete It!</button>
                     </div>
                 </ModalBody>
-            </Modal>
+            </Modal> */}
         </React.Fragment>
     );
 };
