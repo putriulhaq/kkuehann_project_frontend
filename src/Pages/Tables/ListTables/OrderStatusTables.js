@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Card, CardBody, Col, Container, Row, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Breadcrumbs from "../../../components/Common/Breadcrumb";
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useNavigate } from 'react-router-dom';
 import * as url from "../../../helpers/url_helper";
 import { APIClient } from '../../../helpers/api_helper';
+// import { useHistory } from 'react-router-dom'; // Import useHistory
 
 const api = new APIClient();
 
@@ -15,16 +16,18 @@ const OrderStatusTables = () => {
     const [orders, setOrders] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [deleteId, setDeletedId] = useState(null);
+    const [modal_detail, setModalDetail] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState(null);
     const [formData, setFormData] = useState({
         address_order: "",
         order_status: "",
         cust_name: ""
     });
 
-const [modal_detail, setModalDetail] = useState(false);
-const [selectedOrder, setSelectedOrder] = useState(null);
-
-
+    const navigate = useNavigate()
+    const handleProgressClick = () => {
+        navigate('/form-progress', { state: { orderData: selectedOrder } });
+    };
 
     function tog_list() {
         setmodal_list(!modal_list);
@@ -305,6 +308,7 @@ const [selectedOrder, setSelectedOrder] = useState(null);
             </ModalBody>
             <ModalFooter style={{ backgroundColor: '#f0f0f0', borderTop: '1px solid #ccc' }}>
                 <Button color="secondary" onClick={toggleDetailModal}>Close</Button>
+                <Button color="primary" onClick={handleProgressClick}>Progress</Button>
             </ModalFooter>
         </Modal>
 

@@ -73,7 +73,7 @@ const FormProgress = () => {
                           }}
                         >
                           <span className="step-number">01</span>
-                          <span className="step-title" style={{ paddingLeft: "10px" }}>Kitchen</span>
+                          <span className="step-title" style={{ paddingLeft: "10px" }}>Order Received</span>
                         </NavLink>
                       </NavItem>
                       <NavItem className={classnames({ active: activeTab === 2 })}>
@@ -194,6 +194,7 @@ const FormProgress = () => {
                           </Row>
                         </Form>
                       </TabPane>
+
                       <TabPane tabId={2}>
                         <div>
                           <Form>
@@ -287,6 +288,7 @@ const FormProgress = () => {
                           </Form>
                         </div>
                       </TabPane>
+
                       <TabPane tabId={3}>
                         <div>
                           <Form>
@@ -369,6 +371,7 @@ const FormProgress = () => {
                           </Form>
                         </div>
                       </TabPane>
+                      
                       <TabPane tabId={4}>
                         <div className="row justify-content-center">
                           <Col lg="6">
