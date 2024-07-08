@@ -73,7 +73,7 @@ const TransactionTables = () => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <Breadcrumbs title="Tables" breadcrumbItem="Order Tables" />
+                    <Breadcrumbs title="Tables" breadcrumbItem="Transaction Tables" />
 
                     <Row>
                         <Col lg={12}>

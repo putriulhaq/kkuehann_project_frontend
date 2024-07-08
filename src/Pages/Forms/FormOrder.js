@@ -30,6 +30,10 @@ const FormOrder = () => {
     no_tlp: "",
     req_date_order: "",
     orderItems: [],
+    deliveryType: "",
+    deliveryStatus: "",
+    transactionType: "",
+    transactionStatus: ""
   });
 
     const fetchData = () => {
@@ -59,6 +63,7 @@ const FormOrder = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(name)
     setFormData({
       ...formData,
       [name]: value,
@@ -78,10 +83,23 @@ const FormOrder = () => {
   // export const postSocialLogin = data => api.create(url.SOCIAL_LOGIN, data);
 
   const submitOrder = () => {
-    console.log(formData)
-    api.create(BASE_URL + url.POST_ORDER, formData).then((res) => window.location.reload())
-    // fetch("https://your-server-endpoint/api/orders", {
+    console.log(formData);
+    api.create(BASE_URL + url.POST_ORDER, formData)
+      .then((res) => {
+        if (res.status === 'success') {
+          // Assuming status 200 means success
+          window.location.reload();
+        } else {
+          // Handle non-success status
+          console.error('Order submission failed:', res);
+        }
+      })
+      .catch((error) => {
+        // Handle error
+        console.error('Error submitting order:', error);
+      });
   };
+  
 
   useEffect(() => {
     fetchData()
@@ -173,7 +191,7 @@ const FormOrder = () => {
                     </div>
                   </Row>
                   <Row className="mb-3">
-                    <label className="col-md-2 col-form-label">Select</label>
+                    <label className="col-md-2 col-form-label">Menu</label>
                     <div className="col-md-4">
                       <select className="form-control" disabled>
                         <option>Select</option>
@@ -227,6 +245,63 @@ const FormOrder = () => {
                     </Row>
                   ))}
 
+                   <Row className="mb-3">
+                      <label className="col-md-2 col-form-label">Delivery</label>
+                      <div className="col-md-5">
+                          <select 
+                            className="form-control" 
+                            type="select"
+                            name="deliveryType"
+                            value={formData.deliveryType}
+                            onChange={handleChange}>
+                            <option value="">Type</option>
+                            <option value="006001">Grab</option>
+                            <option value="006002">Gojek</option>
+                            <option value="006003">COD</option>
+                          </select>
+                      </div>
+                      <div className="col-md-5">
+                          <select 
+                            className="form-control" 
+                            type="select"
+                            name="deliveryStatus"
+                            value={formData.deliveryStatus}
+                            onChange={handleChange}>
+                            <option value="">Status</option>
+                            <option value="007001">Arrived</option>
+                            <option value="007002">On The Way</option>
+                            <option value="007003">Waiting</option>
+                          </select>
+                      </div>
+                    </Row>
+
+                   <Row className="mb-3">
+                      <label className="col-md-2 col-form-label">Transaction</label>
+                      <div className="col-md-5">
+                          <select 
+                            className="form-control" 
+                            type="select"
+                            name="transactionType"
+                            value={formData.transactionType}
+                            onChange={handleChange}>
+                            <option value="">Type</option>
+                            <option value="002001">Tunai</option>
+                            <option value="002002">Non Tunai</option>
+                          </select>
+                      </div>
+                      <div className="col-md-5">
+                          <select 
+                            className="form-control" 
+                            type="select"
+                            name="transactionStatus"
+                            value={formData.transactionStatus}
+                            onChange={handleChange}>
+                            <option value="">Status</option>
+                            <option value="003001">Success</option>
+                            <option value="003002">Not Yet</option>
+                          </select>
+                      </div>
+                    </Row>
                 <Row>
                     <div className="col-12 d-flex justify-content-center align-items-center">
                         <button type="submit" className="btn btn-primary" onClick={submitOrder}>

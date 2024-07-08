@@ -71,6 +71,7 @@ import FormElements from "../Pages/Forms/FormElements";
 import FormAdvanced from "../Pages/Forms/FormAdvanced";
 import FormValidations from "../Pages/Forms/FormValidations";
 import FormWizard from "../Pages/Forms/FormWizard";
+import FormProgress from "../Pages/Forms/FormProgress";
 
 // Import Tables
 import BasicTable from "../Pages/Tables/BasicTable";
@@ -155,6 +156,7 @@ const authProtectedRoutes = [
   { path: "/form-uploads", component: <FormUpload /> },
   { path: "/form-editors", component: <FormXeditable /> },
   { path: "/form-wizard", component: <FormWizard /> },
+  { path: "/form-progress", component: <FormProgress /> },
   { path: "/form-mask", component: <FormMask /> },
 
   // Tables pages
