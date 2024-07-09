@@ -115,6 +115,7 @@ const SidebarData = [
             { sublabel: "Order Status", link: "/tables-order-status" },
             { sublabel: "Menu", link: "/table-menu" },
             { sublabel: "Transaction", link: "/table-transaction" },
+            { sublabel: "Delivery", link: "/table-delivery" },
         ],
     },
     // {

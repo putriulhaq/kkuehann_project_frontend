@@ -13,14 +13,13 @@ const api = new APIClient()
 
 const BASE_URL = "http://127.0.0.1:5000"
 
-const TransactionTables = () => {
+const DeliveryTables = () => {
     const [modal_list, setmodal_list] = useState(false);
     const [orders, setOrders] = useState([]);
     const[editMode, setEditMode] = useState(false)
     const [formData, setFormData] = useState({
-        transaction_type: "",
-        transaction_to: "",
-        transaction_status: "",
+        delivery_type: "",
+        delivery_status: "",
     });
 
 
@@ -35,13 +34,12 @@ const TransactionTables = () => {
 
 
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_TRANSACTION).then(data => setOrders(data))
+        api.get(BASE_URL+ url.GET_DELIVERY).then(data => setOrders(data))
     }
 
     const submitOrder = (e) => {
         e.preventDefault()
-        console.log(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`)
-        api.update(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`, formData).then((res) => {
+        api.update(`${BASE_URL}${url.UPDATED_DELIVERY}/${formData.order_detail_id}`, formData).then((res) => {
             fetchData(); // Fetch the updated data
             setmodal_list(false); // Close the modal
             setEditMode(false); // Reset edit mode
@@ -59,7 +57,6 @@ const TransactionTables = () => {
     }
 
     const handleEditClick = (data) => {
-        console.log(data)
         setFormData(data)
         setEditMode(true)
         tog_list();
@@ -114,9 +111,8 @@ const TransactionTables = () => {
                                                         </th> */}
                                                         <th className="sort" data-sort="customer_name">No</th>
                                                         <th className="sort" data-sort="customer_name">Customer</th>
-                                                        <th className="sort" data-sort="email">Transaction Type</th>
-                                                        <th className="sort" data-sort="email">Transaction To</th>
-                                                        <th className="sort" data-sort="email">Transaction Status</th>
+                                                        <th className="sort" data-sort="email">Delivery Type</th>
+                                                        <th className="sort" data-sort="email">Delivery Status</th>
                                                         <th className="sort" data-sort="action">Action</th>
                                                     </tr>
                                                 </thead>
@@ -131,9 +127,8 @@ const TransactionTables = () => {
                                                         {/* <td className="id" style={{ display: "none" }}><Link to="#" className="fw-medium link-primary">#VZ2101</Link></td> */}
                                                         <td className="No">{index + 1}</td>
                                                         <td className="customer_name">{data.cust_name}</td>
-                                                        <td className="customer_name">{data.transaction_type_name}</td>
-                                                        <td className="email">{data.transaction_to_name}</td>
-                                                        <td className="phone">{data.transaction_status_name}</td>
+                                                        <td className="customer_name">{data.delivery_type_name}</td>
+                                                        <td className="phone">{data.delivery_status_name}</td>
                                                         <td>
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">
@@ -183,7 +178,7 @@ const TransactionTables = () => {
 
             {/* Add Modal */}
             <Modal isOpen={modal_list} toggle={() => { tog_list(); }} centered >
-                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> Edit Transaction </ModalHeader>
+                <ModalHeader className="bg-light p-3" id="exampleModalLabel" toggle={() => { tog_list(); }}> Edit Delivery </ModalHeader>
                 <form className="tablelist-form" onSubmit={submitOrder}>
                     <ModalBody>
                         <div className="mb-3" id="modal-id" style={{ display: "none" }}>
@@ -198,35 +193,28 @@ const TransactionTables = () => {
 
                         <div>
                             <label htmlFor="status-field" className="form-label">Type</label>
-                            <select className="form-control" data-trigger name="transaction_type" id="transaction_type" onChange={handleChange} value={formData.transaction_type} >
+                            <select className="form-control" data-trigger name="delivery_type" id="delivery_type" onChange={handleChange} value={formData.delivery_type} >
                                 <option value="" disabled>Type</option>
-                                <option value="002001">Tunai</option>
-                                <option value="002002">Non Tunai</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label htmlFor="status-field" className="form-label">To</label>
-                            <select className="form-control" data-trigger name="transaction_to" id="status-field" onChange={handleChange} value={formData.transaction_to} >
-                                <option value=""disabled>To</option>
-                                <option value="004001">BNI</option>
-                                <option value="004002">BCA</option>
+                                <option value="006001">Grab</option>
+                                <option value="006002">Gojek</option>
+                                <option value="006003">COD</option>
                             </select>
                         </div>
 
                         <div>
                             <label htmlFor="status-field" className="form-label">Status</label>
-                            <select className="form-control" data-trigger name="transaction_status" id="status-field" onChange={handleChange} value={formData.transaction_status} >
+                            <select className="form-control" data-trigger name="delivery_status" id="status-field" onChange={handleChange} value={formData.delivery_status} >
                                 <option value="" disabled>Status</option>
-                                <option value="003001">Success</option>
-                                <option value="003002">Not Yet</option>
+                                <option value="007001">Arrived</option>
+                                <option value="007002">On Going</option>
+                                <option value="007003">Waiting</option>
                             </select>
                         </div>
                     </ModalBody>
                     <ModalFooter>
                         <div className="hstack gap-2 justify-content-end">
                             <button type="button" className="btn btn-light" onClick={() => setmodal_list(false)}>Close</button>
-                            <button type="submit" className="btn btn-success" id="add-btn">Edit Order Status</button>
+                            <button type="submit" className="btn btn-success" id="add-btn">Edit Delivery Status</button>
                             {/* <button type="button" className="btn btn-success" id="edit-btn">Update</button> */}
                         </div>
                     </ModalFooter>
@@ -257,4 +245,4 @@ const TransactionTables = () => {
     );
 };
 
-export default TransactionTables;
+export default DeliveryTables;

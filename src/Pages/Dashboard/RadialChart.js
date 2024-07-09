@@ -1,8 +1,13 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-const RadialChart = () => {
-  const series = [44, 55, 67];
+const RadialChart = ({data}) => {
+  // const series = [44, 55, 67];
+  const series = data.map(data => data.order_count)
+  const labels = data.map(data => data.menu_name)
+  const total = series.reduce((prev, curr) => prev + curr, 0);
+
+  console.log(total)
   const options = {
     chart: {
       height: 350,
@@ -31,13 +36,13 @@ const RadialChart = () => {
             label: "Total",
             formatter: function (w) {
               // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-              return 341;
+              return total;
             },
           },
         },
       },
     },
-    labels: ["Facebook", "Twitter", "Instagram"],
+    labels: labels,
     colors: ["#099680", "#4aa3ff", "#5664d2"],
   };
   return (

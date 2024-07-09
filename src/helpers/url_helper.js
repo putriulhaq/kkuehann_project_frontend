@@ -19,14 +19,12 @@ export const UPDATE_EVENT = "/update/event";
 export const DELETE_EVENT = "/delete/event";
 export const GET_CATEGORIES = "/categories";    
 
-// TABLES
-export const GET_MENUS = "/menus"
-export const GET_TRANSACTION = "/transaction"
 
 // Dashboard
 export const GET_LATEST_TRANSACTION = "/order/latest-order"
 export const GET_CARD_INFORMATION = "/dash/card-information" 
-export const GET_NOTIFICATION = "/dash/notification"
+export const GET_NOTIFICATION = "/dash/notification" 
+export const GET_TOP_SELLING = "/dash/top-selling" 
 
 
 //Form 
@@ -35,6 +33,7 @@ export const GET_ORDER = "/order"
 export const DELETED_ORDER = "/order/delete-order"
 
 //menu apis
+export const GET_MENUS = "/menus"
 export const POST_MENU = "/menus"
 export const DELETED_MENU = "/menus"
 export const UPDATE_MENU = "/menus/update"
@@ -45,5 +44,11 @@ export const UPDATE_ORDERSTATUS = "/order/edit-status"
 
 //transaction
 export const UPDATE_TRANSACTION = "/transaction/edit-transaction"
+export const GET_TRANSACTION = "/transaction"
+
+//delivery
+export const GET_DELIVERY = "/delivery"
+export const UPDATED_DELIVERY = "/delivery/edit-delivery"
+
 
     

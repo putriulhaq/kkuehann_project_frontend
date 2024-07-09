@@ -47,6 +47,17 @@ const NotificationsData = () => {
     return notification
     }
     
+const SocialSourceData = () => {
+    const [top_selling, set_top_selling] = useState([])
+    const fetchData = () => {
+        api.get(BASE_URL+ url.GET_TOP_SELLING).then(data => set_top_selling(data))
+    }
+    useEffect(() => {
+        fetchData()
+    }, []);
+    return top_selling
+    }
+    
 
 
 const OrderStatusData = [
@@ -101,29 +112,29 @@ const OverViewData = [
 
 // SocialSource
 
-const SocialSourceData = [
-    {
-        id: 1,
-        title: "Facebook",
-        count: "125",
-        icon: "ri ri-facebook-circle-fill",
-        bgcolor: "primary"
-    },
-    {
-        id: 2,
-        title: "Twitter",
-        count: "112",
-        icon: "ri ri-twitter-fill text-white",
-        bgcolor: "info"
-    },
-    {
-        id: 3,
-        title: "Instagram",
-        count: "    ",
-        icon: "ri ri-instagram-line text-white",
-        bgcolor: "danger"
-    },
-];
+// const SocialSourceData = [
+//     {
+//         id: 1,
+//         title: "Facebook",
+//         count: "125",
+//         icon: "ri ri-facebook-circle-fill",
+//         bgcolor: "primary"
+//     },
+//     {
+//         id: 2,
+//         title: "Twitter",
+//         count: "112",
+//         icon: "ri ri-twitter-fill text-white",
+//         bgcolor: "info"
+//     },
+//     {
+//         id: 3,
+//         title: "Instagram",
+//         count: "    ",
+//         icon: "ri ri-instagram-line text-white",
+//         bgcolor: "danger"
+//     },
+// ];
  
 // Notifications
 

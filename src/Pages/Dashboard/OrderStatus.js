@@ -39,7 +39,7 @@ const OrderStatus = () => {
             <Col xl={4}>
                 <Card>
                     <CardBody>
-                        <CardTitle>Order Stats</CardTitle>
+                        <CardTitle>Order Status</CardTitle>
                         <div>
                             <ul className="list-unstyled">
                                 {filteredData.map((item, key) => (

@@ -19,7 +19,7 @@ const Notifications = () => {
             <CardTitle>Notifications</CardTitle>
 
             <div className="pe-3">
-              <SimpleBar style={{ maxHeight: "287px" }}>
+              <SimpleBar style={{ minHeight: "287px" }}>
                 {data_notif.map((item, key) => (
                   <Link key={key} to="#" className="text-body d-block">
                     <div className="d-flex py-3">
