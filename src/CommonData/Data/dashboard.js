@@ -35,6 +35,19 @@ const CardInformationData = () => {
     return card_information
     }
 
+const NotificationsData = () => {
+    const [notification, set_notification] = useState([])
+    const fetchData = () => {
+        api.get(BASE_URL+ url.GET_NOTIFICATION).then(data => set_notification(data))
+    }
+    useEffect(() => {
+        console.log(notification)
+        fetchData()
+    }, []);
+    return notification
+    }
+    
+
 
 const OrderStatusData = [
     {
@@ -114,42 +127,42 @@ const SocialSourceData = [
  
 // Notifications
 
-const NotificationsData = [
-    {
-        id:1,
-        name:"Scott Elliott",
-        desc:"If several languages coalesce",
-        time:" 20 min ago",
-        src:img2,        
-    },
-    {
-        id:2,
-        name:"Team A",
-        desc:"Team A Meeting 9:15 AM",
-        time:"9:00 am",
-        icon:"mdi mdi-account-supervisor"
-    },
-    {
-        id:3,
-        name:"Frank Martin",
-        desc:"Neque porro quisquam est",
-        time:" 8:54 am",
-        src:img3,        
-    },{
-        id:4,
-        name:"Updates",
-        desc:"It will be as simple as fact",
-        time:"27-03-2020",
-        icon:"mdi mdi-email-outline"       
-    },{
-        id:5,
-        name:"Terry Garrick",
-        desc:"At vero eos et accusamus et",
-        time:"27-03-2020",
-        src:img4,        
-    }
+// const NotificationsData = [
+//     {
+//         id:1,
+//         name:"Scott Elliott",
+//         desc:"If several languages coalesce",
+//         time:" 20 min ago",
+//         src:img2,        
+//     },
+//     {
+//         id:2,
+//         name:"Team A",
+//         desc:"Team A Meeting 9:15 AM",
+//         time:"9:00 am",
+//         icon:"mdi mdi-account-supervisor"
+//     },
+//     {
+//         id:3,
+//         name:"Frank Martin",
+//         desc:"Neque porro quisquam est",
+//         time:" 8:54 am",
+//         src:img3,        
+//     },{
+//         id:4,
+//         name:"Updates",
+//         desc:"It will be as simple as fact",
+//         time:"27-03-2020",
+//         icon:"mdi mdi-email-outline"       
+//     },{
+//         id:5,
+//         name:"Terry Garrick",
+//         desc:"At vero eos et accusamus et",
+//         time:"27-03-2020",
+//         src:img4,        
+//     }
 
-];
+// ];
 
 
 export { LatestTransactionData, CardInformationData, OrderStatusData, OverViewData, SocialSourceData, NotificationsData }

@@ -25,7 +25,9 @@ export const GET_TRANSACTION = "/transaction"
 
 // Dashboard
 export const GET_LATEST_TRANSACTION = "/order/latest-order"
-export const GET_CARD_INFORMATION = "/dash/card-information"
+export const GET_CARD_INFORMATION = "/dash/card-information" 
+export const GET_NOTIFICATION = "/dash/notification"
+
 
 //Form 
 export const POST_ORDER = "/order"
