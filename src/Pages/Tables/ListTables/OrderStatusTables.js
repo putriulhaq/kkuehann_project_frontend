@@ -8,7 +8,7 @@ import { APIClient } from '../../../helpers/api_helper';
 
 const api = new APIClient();
 
-const BASE_URL = "http://127.0.0.1:5000";
+const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app";
 
 const OrderStatusTables = () => {
     const [modal_list, setmodal_list] = useState(false);

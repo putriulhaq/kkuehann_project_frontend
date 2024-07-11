@@ -9,7 +9,7 @@ import { APIClient } from '../../../helpers/api_helper';
 // Import Flatepicker
 import Flatpickr from "react-flatpickr";
 
-const BASE_URL = "http://127.0.0.1:5000"
+const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
 
 const MenuTables = () => {
     document.title = "Menus | KKUEHANN";
