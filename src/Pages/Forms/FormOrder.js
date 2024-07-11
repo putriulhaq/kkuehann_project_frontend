@@ -18,8 +18,6 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const api = new APIClient()
 
-const BASE_URL = "http://127.0.0.1:5000"
-
 const FormOrder = () => {
   document.title = "Form Orders | KKUEHANN";
   const [formElements, setFormElements] = useState([]); 
@@ -37,7 +35,7 @@ const FormOrder = () => {
   });
 
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_MENUS).then(data => setMenu(data))
+        api.get(url.GET_MENUS).then(data => setMenu(data))
     }
   
 
@@ -84,7 +82,7 @@ const FormOrder = () => {
 
   const submitOrder = () => {
     console.log(formData);
-    api.create(BASE_URL + url.POST_ORDER, formData)
+    api.create(url.POST_ORDER, formData)
       .then((res) => {
         if (res.status === 'success') {
           // Assuming status 200 means success

@@ -9,8 +9,6 @@ import { APIClient } from '../../../helpers/api_helper';
 // Import Flatepicker
 import Flatpickr from "react-flatpickr";
 
-const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
-
 const MenuTables = () => {
     document.title = "Menus | KKUEHANN";
     const [data, setData] = useState([]);
@@ -36,7 +34,7 @@ const MenuTables = () => {
         e.preventDefault();
         if (editMode) {
             // Update existing menu
-            api.update(`${BASE_URL}${url.UPDATE_MENU}/${formData.menu_id}`, formData)
+            api.update(`${url.UPDATE_MENU}/${formData.menu_id}`, formData)
                 .then((res) => {
                     fetchData(); // Fetch the updated data
                     setmodal_list(false); // Close the modal
@@ -45,7 +43,7 @@ const MenuTables = () => {
                 .catch((error) => console.error('Error:', error));
         } else {
             // Create new menu
-            api.create(BASE_URL + url.POST_MENU, formData)
+            api.create(url.POST_MENU, formData)
                 .then((res) => {
                     fetchData(); // Fetch the updated data
                     setmodal_list(false); // Close the modal
@@ -56,7 +54,7 @@ const MenuTables = () => {
 
     const fetchData = async () => {
         try {
-            const response = await api.get(BASE_URL + url.GET_MENUS);
+            const response = await api.get(url.GET_MENUS);
             setData(response);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -70,7 +68,7 @@ const MenuTables = () => {
     const deletedData = async (id) => {
         try {
             setDeletedId(id)
-            const response = await api.delete(`${BASE_URL}${url.GET_MENUS}/${id}`).then((res) => setData(res));
+            const response = await api.delete(`${url.GET_MENUS}/${id}`).then((res) => setData(res));
             fetchData();
         } catch (error) {
             console.error('Error fetching data:', error);

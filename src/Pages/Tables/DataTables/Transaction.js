@@ -9,13 +9,11 @@ import { APIClient } from '../../../helpers/api_helper';
 
 const api = new APIClient()
 
-const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
-
 const Transaction= () => {
     const [data, setData] = useState([]);
 
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_MENUS).then(data => setData(data))
+        api.get(url.GET_MENUS).then(data => setData(data))
     }
 
     useEffect(() => {

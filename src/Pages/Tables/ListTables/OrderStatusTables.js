@@ -8,8 +8,6 @@ import { APIClient } from '../../../helpers/api_helper';
 
 const api = new APIClient();
 
-const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app";
-
 const OrderStatusTables = () => {
     const [modal_list, setmodal_list] = useState(false);
     const [modal_delete, setmodal_delete] = useState(false);
@@ -41,7 +39,7 @@ const OrderStatusTables = () => {
 
 
     const fetchData = () => {
-        api.get(BASE_URL + url.GET_ORDER)
+        api.get(url.GET_ORDER)
             .then(data => {
                 if (Array.isArray(data)) {
                     setOrders(data);
@@ -56,7 +54,7 @@ const OrderStatusTables = () => {
 
     const submitOrder = (e) => {
         e.preventDefault();
-        api.update(`${BASE_URL}${url.UPDATE_ORDERSTATUS}/${formData.order_detail_id}`, formData)
+        api.update(`${url.UPDATE_ORDERSTATUS}/${formData.order_detail_id}`, formData)
             .then((res) => {
                 fetchData(); // Fetch the updated data
                 setmodal_list(false); // Close the modal
@@ -104,7 +102,7 @@ const OrderStatusTables = () => {
         try {
             // console.log(id);
             // setDeletedId(id);
-            await api.update(`${BASE_URL}${url.DELETED_ORDER}/${id}`);
+            await api.update(`${url.DELETED_ORDER}/${id}`);
             fetchData(); // Fetch the updated list of orders
             setmodal_delete(false)
         } catch (error) {

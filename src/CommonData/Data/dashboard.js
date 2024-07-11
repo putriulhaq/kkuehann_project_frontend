@@ -9,13 +9,13 @@ import { APIClient } from '../../../src/helpers/api_helper';
 
 
 const api = new APIClient
-const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
+// const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
 // Latest Transation 
 
 const LatestTransactionData = () => {
     const [latest_transaction, set_data_transaction] = useState([])
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_LATEST_TRANSACTION).then(data => set_data_transaction(data))
+        api.get(url.GET_LATEST_TRANSACTION).then(data => set_data_transaction(data))
     }
     useEffect(() => {
         fetchData()
@@ -27,7 +27,7 @@ const LatestTransactionData = () => {
 const CardInformationData = () => {
     const [card_information, set_data_card] = useState([])
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_CARD_INFORMATION).then(data => set_data_card(data))
+        api.get(url.GET_CARD_INFORMATION).then(data => set_data_card(data))
     }
     useEffect(() => {
         fetchData()
@@ -38,7 +38,7 @@ const CardInformationData = () => {
 const NotificationsData = () => {
     const [notification, set_notification] = useState([])
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_NOTIFICATION).then(data => set_notification(data))
+        api.get(url.GET_NOTIFICATION).then(data => set_notification(data))
     }
     useEffect(() => {
         console.log(notification)
@@ -50,7 +50,7 @@ const NotificationsData = () => {
 const SocialSourceData = () => {
     const [top_selling, set_top_selling] = useState([])
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_TOP_SELLING).then(data => set_top_selling(data))
+        api.get(url.GET_TOP_SELLING).then(data => set_top_selling(data))
     }
     useEffect(() => {
         fetchData()

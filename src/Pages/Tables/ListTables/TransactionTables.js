@@ -11,8 +11,6 @@ import Flatpickr from "react-flatpickr";
 
 const api = new APIClient()
 
-const BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
-
 const TransactionTables = () => {
     const [modal_list, setmodal_list] = useState(false);
     const [orders, setOrders] = useState([]);
@@ -35,13 +33,13 @@ const TransactionTables = () => {
 
 
     const fetchData = () => {
-        api.get(BASE_URL+ url.GET_TRANSACTION).then(data => setOrders(data))
+        api.get(url.GET_TRANSACTION).then(data => setOrders(data))
     }
 
     const submitOrder = (e) => {
         e.preventDefault()
-        console.log(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`)
-        api.update(`${BASE_URL}${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`, formData).then((res) => {
+        console.log(`${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`)
+        api.update(`${url.UPDATE_TRANSACTION}/${formData.order_detail_id}`, formData).then((res) => {
             fetchData(); // Fetch the updated data
             setmodal_list(false); // Close the modal
             setEditMode(false); // Reset edit mode
