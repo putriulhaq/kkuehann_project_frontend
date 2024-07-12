@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === 'development') {
     BASE_URL = "http://127.0.0.1:5000"
   } else {
     console.log('not local')
-    BASE_URL = "https://flask-hello-world-one-rosy.vercel.app/"
+    BASE_URL = "https://flask-hello-world-one-rosy.vercel.app"
   }
   
 // Dashboard
