@@ -56,13 +56,13 @@ const FormProgress = ({data}) => {
   const posisitonProgress = () => {
     const orderStatus = progressData.orderData.order_status
     const delivery_status = progressData.orderData.delivery_status
-    if (delivery_status === '007001'){
+    if (delivery_status === '007001' || orderStatus === '005001'){
       setactiveTab(4)
-    } else if (delivery_status === '007002'){
+    } else if (delivery_status === '007002' && orderStatus === '005005'){
       setactiveTab(3)
-    } else if(orderStatus === '005004'){
+    } else if(orderStatus === '005004' && delivery_status === '007003'){
       setactiveTab(1)
-    } else if(orderStatus === '005005'){
+    } else if(orderStatus === '005005' &&  delivery_status === '007003'){
       setactiveTab(2)
     } else {
       setactiveTab(1)

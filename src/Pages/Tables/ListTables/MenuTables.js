@@ -9,11 +9,14 @@ import { APIClient } from '../../../helpers/api_helper';
 // Import Flatepicker
 import Flatpickr from "react-flatpickr";
 
+const api = new APIClient();
+
 const MenuTables = () => {
     document.title = "Menus | KKUEHANN";
     const [data, setData] = useState([]);
     const [deleteId, setDeletedId] = useState(null);
     const [editMode, setEditMode] = useState(false);
+    const [modal_detail, setModalDetail] = useState(false);
     const [formData, setFormData] = useState({
         menu_name: "",
         priceist: "",
@@ -28,7 +31,12 @@ const MenuTables = () => {
         });
     };
 
-    const api = new APIClient();
+    const handleRemoveClick = (e, data) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDeletedId(data);
+        setmodal_delete(true);
+    };
 
     const submitMenu = (e) => {
         e.preventDefault();
@@ -64,12 +72,13 @@ const MenuTables = () => {
     const tog_delete = (id) => {
         setmodal_delete(!modal_delete);
     };
+    
 
     const deletedData = async (id) => {
         try {
-            setDeletedId(id)
-            const response = await api.delete(`${url.GET_MENUS}/${id}`).then((res) => setData(res));
+            await api.update(`${url.GET_MENUS}/${id}`);
             fetchData();
+            setmodal_delete(false)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -155,7 +164,7 @@ const MenuTables = () => {
                                                                         onClick={() => handleEditClick(data)}>Edit</button>
                                                                 </div>
                                                                 <div className="remove">
-                                                                    <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" data-id={data.menu_id} onClick={() => deletedData(data.menu_id)}>Remove</button>
+                                                                    <button className="btn btn-sm btn-danger remove-item-btn" data-bs-toggle="modal" data-bs-target="#deleteRecordModal" data-id={data.menu_id} onClick={(e) => handleRemoveClick(e, data.menu_id)}>Remove</button>
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -230,22 +239,26 @@ const MenuTables = () => {
             </Modal>
 
             {/* Remove Modal */}
-            <Modal isOpen={modal_delete} toggle={() => { tog_delete(); }} className="modal fade zoomIn" id="deleteRecordModal" centered >
-                <div className="modal-header">
-                    <Button type="button" onClick={() => setmodal_delete(false)} className="btn-close" aria-label="Close"> </Button>
-                </div>
+            <Modal isOpen={modal_delete} toggle={() => setmodal_delete(!modal_delete)} centered>
+                <ModalHeader toggle={() => setmodal_delete(!modal_delete)}>
+                    Confirm Delete
+                </ModalHeader>
                 <ModalBody>
                     <div className="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                            colors="primary:#f7b84b,secondary:#f06548" style={{ width: "100px", height: "100px" }}></lord-icon>
+                        <lord-icon
+                            src="https://cdn.lordicon.com/gsqxdxog.json"
+                            trigger="loop"
+                            colors="primary:#f7b84b,secondary:#f06548"
+                            style={{ width: "100px", height: "100px" }}
+                        ></lord-icon>
                         <div className="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Are you Sure ?</h4>
-                            <p className="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record ?</p>
+                            <h4>Are you Sure?</h4>
+                            <p className="text-muted mx-4 mb-0">Are you Sure You want to Remove this Record?</p>
                         </div>
                     </div>
                     <div className="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" className="btn w-sm btn-light" onClick={() => setmodal_delete(false)}>Close</button>
-                        <button type="button" className="btn w-sm btn-danger " id="delete-record" onClick={() => deletedData(deleteId)}>Yes, Delete It!</button>
+                        <Button color="light" onClick={() => setmodal_delete(false)}>Close</Button>
+                        <Button color="danger" onClick={() => deletedData(deleteId)}>Yes, Delete It!</Button>
                     </div>
                 </ModalBody>
             </Modal>

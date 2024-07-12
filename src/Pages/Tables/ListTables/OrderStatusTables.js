@@ -243,6 +243,8 @@ const OrderStatusTables = () => {
                             <label htmlFor="status-field" className="form-label">Status</label>
                             <select className="form-control" data-trigger name="order_status" id="status-field" onChange={handleChange} value={formData.order_status}>
                                 <option value="" disabled>Status</option>
+                                <option value="005004">In</option>
+                                <option value="005005">Preparing</option>
                                 <option value="005001">Completed</option>
                                 <option value="005002">Cancel</option>
                                 <option value="005003">Pending</option>
