@@ -167,6 +167,7 @@ const FormOrder = () => {
                         type="tel"
                         id="no_tlp"
                         name="no_tlp"
+                        placeholder="Telephone"
                         onChange={handleChange}
                       />
                     </div>
@@ -192,14 +193,14 @@ const FormOrder = () => {
                     <label className="col-md-2 col-form-label">Menu</label>
                     <div className="col-md-4">
                       <select className="form-control" disabled>
-                        <option>Select</option>
+                        <option>Select In Next Row</option>
                       </select>
                     </div>
                     <div className="col-md-4">
                     <input
                         className="form-control"
                         type="text"
-                        placeholder="Input Quantity" disabled
+                        placeholder="Input Quantity In Next Row"disabled
                       />
                     </div>
                     <div class="col-md-2 d-flex justify-content-center align-items-center" >

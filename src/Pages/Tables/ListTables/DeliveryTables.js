@@ -68,7 +68,7 @@ const DeliveryTables = () => {
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
-                    <Breadcrumbs title="Tables" breadcrumbItem="Transaction Tables" />
+                    <Breadcrumbs title="Tables" breadcrumbItem="Delivery Tables" />
 
                     <Row>
                         <Col lg={12}>
@@ -88,14 +88,14 @@ const DeliveryTables = () => {
                                                     ><i className="ri-delete-bin-2-line"></i></Button> */}
                                                 </div>
                                             </Col>
-                                            <Col className="col-sm">
+                                            {/* <Col className="col-sm">
                                                 <div className="d-flex justify-content-sm-end">
                                                     <div className="search-box ms-2">
                                                         <input type="text" className="form-control search" placeholder="Search..." />
                                                         <i className="ri-search-line search-icon"></i>
                                                     </div>
                                                 </div>
-                                            </Col>
+                                            </Col> */}
                                         </Row>
 
                                         <div className="table-responsive table-card mt-3 mb-1">
