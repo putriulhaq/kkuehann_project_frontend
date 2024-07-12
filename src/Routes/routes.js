@@ -113,40 +113,40 @@ const authProtectedRoutes = [
   { path: "/userprofile", component: <UserProfile /> },
 
   // E-mail
-  { path: "/inbox", component: <Inbox /> },
-  { path: "/read-email", component: <ReadEmail /> },
-  { path: "/compose-email", component: <EmailCompose /> },
+  // { path: "/inbox", component: <Inbox /> },
+  // { path: "/read-email", component: <ReadEmail /> },
+  // { path: "/compose-email", component: <EmailCompose /> },
 
-  // Utility Pages
-  { path: "/pages-starter", component: <StarterPage /> },
-  { path: "/pages-timeline", component: <TimeLine /> },
-  { path: "/pages-faqs", component: <FAQs /> },
-  { path: "/pages-pricing", component: <Pricing /> },
+  // // Utility Pages
+  // { path: "/pages-starter", component: <StarterPage /> },
+  // { path: "/pages-timeline", component: <TimeLine /> },
+  // { path: "/pages-faqs", component: <FAQs /> },
+  // { path: "/pages-pricing", component: <Pricing /> },
 
   // UiElements Pages
-  { path: "/ui-alerts", component: <UiAlerts /> },
-  { path: "/ui-badge", component: <UiBadge /> },
-  { path: "/ui-breadcrumb", component: <UiBreadcrumb /> },
-  { path: "/ui-buttons", component: <UiButtons /> },
-  { path: "/ui-cards", component: <UiCards /> },
-  { path: "/ui-carousel", component: <UiCarousel /> },
-  { path: "/ui-dropdowns", component: <UiDropdown /> },
-  { path: "/ui-grid", component: <UiGrid /> },
-  { path: "/ui-images", component: <UiImages /> },
-  { path: "/ui-lightbox", component: <UiLightbox /> },
-  { path: "/ui-modals", component: <UiModals /> },
-  { path: "/ui-offcanvas", component: <UiOffcanvas /> },
-  { path: "/ui-rangeslider", component: <UiRangeSlider /> },
-  { path: "/ui-sessiontimeout", component: <UiSessionTimeout /> },
-  { path: "/ui-pagination", component: <UiPagination /> },
-  { path: "/ui-progressbars", component: <UiProgressBars /> },
-  { path: "/ui-placeholders", component: <UiPlaceholders /> },
-  { path: "/ui-tabs-accordions", component: <UiTabs /> },
-  { path: "/ui-typography", component: <UiTypography /> },
-  { path: "/ui-toasts", component: <UiToasts /> },
-  { path: "/ui-video", component: <UiVideo /> },
-  { path: "/ui-popovers", component: <UiPopovers /> },
-  { path: "/ui-rating", component: <UiRating /> },
+  // { path: "/ui-alerts", component: <UiAlerts /> },
+  // { path: "/ui-badge", component: <UiBadge /> },
+  // { path: "/ui-breadcrumb", component: <UiBreadcrumb /> },
+  // { path: "/ui-buttons", component: <UiButtons /> },
+  // { path: "/ui-cards", component: <UiCards /> },
+  // { path: "/ui-carousel", component: <UiCarousel /> },
+  // { path: "/ui-dropdowns", component: <UiDropdown /> },
+  // { path: "/ui-grid", component: <UiGrid /> },
+  // { path: "/ui-images", component: <UiImages /> },
+  // { path: "/ui-lightbox", component: <UiLightbox /> },
+  // { path: "/ui-modals", component: <UiModals /> },
+  // { path: "/ui-offcanvas", component: <UiOffcanvas /> },
+  // { path: "/ui-rangeslider", component: <UiRangeSlider /> },
+  // { path: "/ui-sessiontimeout", component: <UiSessionTimeout /> },
+  // { path: "/ui-pagination", component: <UiPagination /> },
+  // { path: "/ui-progressbars", component: <UiProgressBars /> },
+  // { path: "/ui-placeholders", component: <UiPlaceholders /> },
+  // { path: "/ui-tabs-accordions", component: <UiTabs /> },
+  // { path: "/ui-typography", component: <UiTypography /> },
+  // { path: "/ui-toasts", component: <UiToasts /> },
+  // { path: "/ui-video", component: <UiVideo /> },
+  // { path: "/ui-popovers", component: <UiPopovers /> },
+  // { path: "/ui-rating", component: <UiRating /> },
 
   // Forms pages
   { path: "/form-orders", component: <FormOrder /> },
@@ -176,14 +176,14 @@ const authProtectedRoutes = [
   { path: "/chart-sparklinecharts", component: <Sparklinechart /> },
 
   // Icons Pages
-  { path: "/icon-boxicon", component: <IconBoxicons /> },
-  { path: "/icons-materialdesign", component: <IconMaterialdesign /> },
-  { path: "/icons-fontawesome", component: <IconFontawesome /> },
-  { path: "/icon-dripicons", component: <IconDripicons /> },
+  // { path: "/icon-boxicon", component: <IconBoxicons /> },
+  // { path: "/icons-materialdesign", component: <IconMaterialdesign /> },
+  // { path: "/icons-fontawesome", component: <IconFontawesome /> },
+  // { path: "/icon-dripicons", component: <IconDripicons /> },
 
   // Maps Pages
-  { path: "/maps-vector", component: <VectorMaps /> },
-  { path: "/maps-google", component: <GoogleMap /> },
+  // { path: "/maps-vector", component: <VectorMaps /> },
+  // { path: "/maps-google", component: <GoogleMap /> },
 
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
@@ -197,22 +197,22 @@ const authProtectedRoutes = [
 const publicRoutes = [
 
   // Authentication Page
-  { path: "/logout", component: <Logout /> },
-  { path: "/login", component: <Login /> },
-  { path: "/forgot-password", component: <ForgetPasswordPage /> },
-  { path: "/register", component: <Register /> },
+  // { path: "/logout", component: <Logout /> },
+  // { path: "/login", component: <Login /> },
+  // { path: "/forgot-password", component: <ForgetPasswordPage /> },
+  // { path: "/register", component: <Register /> },
 
-  // Authentication Inner Pages
-  { path: "/auth-login", component: <Login1 /> },
-  { path: "/auth-register", component: <Register1 /> },
-  { path: "/auth-recoverpw", component: <RecoverPassword /> },
-  { path: "/auth-lock-screen", component: <LockScreen /> },
+  // // Authentication Inner Pages
+  // { path: "/auth-login", component: <Login1 /> },
+  // { path: "/auth-register", component: <Register1 /> },
+  // { path: "/auth-recoverpw", component: <RecoverPassword /> },
+  // { path: "/auth-lock-screen", component: <LockScreen /> },
 
-  // Utility Pages
-  { path: "/pages-404", component: <Error404 /> },
-  { path: "/pages-500", component: <Error500 /> },
-  { path: "/pages-maintenance", component: <Maintenance /> },
-  { path: "/pages-comingsoon", component: <ComingSoon /> },
+  // // Utility Pages
+  // { path: "/pages-404", component: <Error404 /> },
+  // { path: "/pages-500", component: <Error500 /> },
+  // { path: "/pages-maintenance", component: <Maintenance /> },
+  // { path: "/pages-comingsoon", component: <ComingSoon /> },
 ];
 
 export { authProtectedRoutes, publicRoutes };

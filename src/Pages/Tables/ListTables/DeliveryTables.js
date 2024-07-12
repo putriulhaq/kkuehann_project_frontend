@@ -60,6 +60,19 @@ const DeliveryTables = () => {
         tog_list();
     }
 
+    const getStatusColorClass = (status) => {
+        switch (status) {
+            case "007001":
+                return "badge-soft-success"; // Completed
+            case "007007":
+                return "badge-soft-secondary";// Cancel
+            case "007002":
+                return "badge-soft-warning"; // Pending
+            default:
+                return "badge-soft-secondary";
+        }
+    };
+
     useEffect(() => {
         fetchData()
     }, []);
@@ -126,7 +139,9 @@ const DeliveryTables = () => {
                                                         <td className="No">{index + 1}</td>
                                                         <td className="customer_name">{data.cust_name}</td>
                                                         <td className="customer_name">{data.delivery_type_name}</td>
-                                                        <td className="phone">{data.delivery_status_name}</td>
+                                                        <td className="phone"> <span className={`badge ${getStatusColorClass(data.delivery_status)} text-uppercase`}>
+                                                                    {data.delivery_status_name ? data.delivery_status_name : '-'}
+                                                                </span></td>
                                                         <td>
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">

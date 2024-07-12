@@ -63,6 +63,19 @@ const TransactionTables = () => {
         tog_list();
     }
 
+    const getStatusColorClass = (status) => {
+        switch (status) {
+            case "003001":
+                return "badge-soft-success"; // Completed
+            case "003002":
+                return "badge-soft-danger"; // Cancel
+            case "003003":
+                return "badge-soft-warning"; // Pending
+            default:
+                return "badge-soft-secondary";
+        }
+    };
+
     useEffect(() => {
         fetchData()
     }, []);
@@ -131,7 +144,9 @@ const TransactionTables = () => {
                                                         <td className="customer_name">{data.cust_name}</td>
                                                         <td className="customer_name">{data.transaction_type_name}</td>
                                                         <td className="email">{data.transaction_to_name}</td>
-                                                        <td className="phone">{data.transaction_status_name}</td>
+                                                        <td className="phone"> <span className={`badge ${getStatusColorClass(data.transaction_status)} text-uppercase`}>
+                                                                    {data.transaction_status_name ? data.transaction_status_name : '-'}
+                                                                </span></td>
                                                         <td>
                                                             <div className="d-flex gap-2">
                                                                 <div className="edit">
