@@ -191,21 +191,11 @@ const FormOrder = () => {
                   </Row>
                   <Row className="mb-3">
                     <label className="col-md-2 col-form-label">Menu</label>
-                    <div className="col-md-4">
-                      <select className="form-control" disabled>
-                        <option>Select In Next Row</option>
-                      </select>
-                    </div>
-                    <div className="col-md-4">
-                    <input
-                        className="form-control"
-                        type="text"
-                        placeholder="Input Quantity In Next Row"disabled
-                      />
-                    </div>
-                    <div class="col-md-2 d-flex justify-content-center align-items-center" >
-                        <i class="bx bxs-cart-add" style={{ fontSize: "2em", cursor: "pointer" }}
+                    <div class="col-md-2 d-flex justify-content-start align-items-center">
+                    <button type="button" color="primary"  style={{borderRadius: "10px", width:"50%"}}>
+                            <i class="bx bxs-cart-add" style={{ fontSize: "2em", cursor: "pointer" }}
                         onClick={addFormElement}></i>
+                    </button>
                     </div>
                   </Row>
 
