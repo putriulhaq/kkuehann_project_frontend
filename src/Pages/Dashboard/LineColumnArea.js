@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
+import { APIClient } from '../../helpers/api_helper';
+import * as url from "../../../src/helpers/url_helper";
 
+const api = new APIClient()
 
-const LineColumnAreaData = {
-  series: [
-    {
-      name: "Expenses",
-      type: "column",
-      data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 18],
-    },
-    {
-      name: "Maintenance",
-      type: "area",
-      data: [44, 55, 41, 42, 22, 43, 21, 41, 56, 27, 43, 27],
-    },
-    {
-      name: "Profit",
-      type: "line",
-      data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
-    },
-  ],
-  options: {
+const LineColumnArea = () => {
+  const [summary, setSummary] = useState({ dates: [], order_counts: [] });
+
+  const fetchData = async () => {
+    try {
+      const data = await api.get(url.GET_SALES_SUMMARY);
+      setSummary(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const series = useMemo(() => [{
+    name: "Order",
+    type: "column",
+    data: summary.order_counts || []
+  }], [summary.order_counts]);
+
+  const options = useMemo(() => ({
     chart: {
       height: 350,
-        type: 'line',
-        stacked: false,
-        toolbar: {
-            show: false
-        },
+      type: 'line',
+      stacked: false,
+      toolbar: {
+        show: false
+      },
     },
     stroke: {
       width: [0, 1, 1],
-        dashArray: [0, 0, 5],
-        curve: 'smooth'
+      dashArray: [0, 0, 5],
+      curve: 'smooth'
     },
     plotOptions: {
       bar: {
@@ -41,9 +48,8 @@ const LineColumnAreaData = {
     },
     legend: {
       show: false,
-  },
-    colors: ["#0ab39c", "rgba(212, 218, 221, 0.18)", "rgb(251, 77, 83)"],
-
+    },
+    colors: ["#0ab39c"],
     fill: {
       opacity: [0.85, 0.25, 1],
       gradient: {
@@ -55,25 +61,19 @@ const LineColumnAreaData = {
         stops: [0, 100, 100, 100],
       },
     },
-    labels: [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
+    labels: summary.dates || [],
     markers: {
       size: 0,
     },
     xaxis: {
-      type: "month",
+      type: "datetime",
+    },
+    yaxis: {
+      labels: {
+        formatter: (val) => {
+          return Math.floor(val);
+        },
+      },
     },
     tooltip: {
       shared: true,
@@ -81,7 +81,7 @@ const LineColumnAreaData = {
       y: {
         formatter: function (y) {
           if (typeof y !== "undefined") {
-            return y.toFixed(0) + " points"
+            return y.toFixed(0) + " orders"
           }
           return y
         },
@@ -90,22 +90,23 @@ const LineColumnAreaData = {
     grid: {
       borderColor: "#f1f1f1",
     },
-  },
-}
+  }), [summary.dates]);
 
-const LineColumnArea = () => {
-  return(
+  if (summary.dates.length === 0) {
+    return <div>Loading...</div>;
+  }
+
+  return (
     <React.Fragment>
-        <ReactApexChart
-          options={LineColumnAreaData.options}
-          series={LineColumnAreaData.series}
-          type="line"
-          height="350"
-          stacked= "false"
-          className="apex-charts"
-        />
-      </React.Fragment>
-  )
-}
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="line"
+        height="350"
+        className="apex-charts"
+      />
+    </React.Fragment>
+  );
+};
 
 export default LineColumnArea;

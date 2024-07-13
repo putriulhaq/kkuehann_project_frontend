@@ -41,7 +41,6 @@ const NotificationsData = () => {
         api.get(url.GET_NOTIFICATION).then(data => set_notification(data))
     }
     useEffect(() => {
-        console.log(notification)
         fetchData()
     }, []);
     return notification
@@ -56,6 +55,18 @@ const SocialSourceData = () => {
         fetchData()
     }, []);
     return top_selling
+    }
+    
+const LineChartData = () => {
+    const [summary, set_summary] = useState([])
+    const fetchData = () => {
+        api.get(url.GET_SALES_SUMMARY).then(data => set_summary(data))
+    }
+    useEffect(() => {
+        console.log(fetchData())
+        fetchData()
+    }, []);
+    return summary
     }
     
 
@@ -89,25 +100,25 @@ const OrderStatusData = [
 const OverViewData = [
     {
         id: 1,
-        title: "Expenses",
+        title: "Order",
         count: "8,524",
         percentage: "1.2",
         color: "primary"
     },
-    {
-        id: 2,
-        title: "Maintenance",
-        count: "8,524",
-        percentage: "2.0",
-        color: "light"
-    },
-    {
-        id: 3,
-        title: "Profit",
-        count: "8,524",
-        percentage: "0.4",
-        color: "danger"
-    },
+    // {
+    //     id: 2,
+    //     title: "Maintenance",
+    //     count: "8,524",
+    //     percentage: "2.0",
+    //     color: "light"
+    // },
+    // {
+    //     id: 3,
+    //     title: "Profit",
+    //     count: "8,524",
+    //     percentage: "0.4",
+    //     color: "danger"
+    // },
 ];
 
 // SocialSource
@@ -176,5 +187,5 @@ const OverViewData = [
 // ];
 
 
-export { LatestTransactionData, CardInformationData, OrderStatusData, OverViewData, SocialSourceData, NotificationsData }
+export { LatestTransactionData, CardInformationData, LineChartData, OrderStatusData, OverViewData, SocialSourceData, NotificationsData }
 // export { LatestTransationData }

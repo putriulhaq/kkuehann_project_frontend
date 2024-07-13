@@ -1,6 +1,7 @@
 import {
   LatestTransactionData,
   CardInformationData,
+  LineChartData,
   OrderStatusData,
   OverViewData,
   SocialSourceData,
@@ -12,6 +13,7 @@ import {calenderDefaultCategories, events} from "./calender";
 export {
   LatestTransactionData,
   CardInformationData,
+  LineChartData,
   OrderStatusData,
   OverViewData,
   SocialSourceData,
@@ -19,10 +21,3 @@ export {
   calenderDefaultCategories, 
   events
 };
-
-
-// menu_name,
-// description, 
-// is_deleted, 
-// created_at, 
-// priceist

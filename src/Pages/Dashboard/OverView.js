@@ -1,5 +1,7 @@
 import React from 'react';
 import LineColumnArea from './LineColumnArea';
+import { LineChartData } from '../../CommonData/Data/index';
+import * as url from "../../../src/helpers/url_helper";
 
 import {
     Card,
@@ -9,7 +11,6 @@ import {
 } from "reactstrap";
 
 import { OverViewData } from '../../CommonData/Data/index';
-
 
 const OverView = () => {
     return (
@@ -21,7 +22,7 @@ const OverView = () => {
                             <div className="flex-grow-1">
                                 <h5 className="card-title">Overview</h5>
                             </div>
-                            <div className="flex-shrink-0">
+                            {/* <div className="flex-shrink-0">
                                 <div>
                                     <button type="button" className="btn btn-soft-secondary btn-sm me-1">
                                         ALL
@@ -36,7 +37,7 @@ const OverView = () => {
                                         1Y
                                     </button>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div>
                             <LineColumnArea />
@@ -45,12 +46,10 @@ const OverView = () => {
                     <CardBody className="border-top">
                         <div className="text-muted text-center">
                             <Row>
-                                {OverViewData.map((item, key) => (<Col md={4} key={key} className="border-end">
                                     <div>
-                                        <p className="mb-2"><i className={"mdi mdi-circle font-size-12 me-1 text-" + item.color}></i> {item.title}</p>
-                                        <h5 className="font-size-16 mb-0">$ {item.count} <span className="text-success font-size-12"><i className="mdi mdi-menu-up font-size-14 me-1"></i>{item.percentage} %</span></h5>
+                                        <p className="mb-2"><i className="mdi mdi-circle font-size-12 me-1 text-primary"></i>Orders</p>
+                                        {/* <h5 className="font-size-16 mb-0">$ {item.count} <span className="text-success font-size-12"><i className="mdi mdi-menu-up font-size-14 me-1"></i></span></h5> */}
                                     </div>
-                                </Col>))}
                             </Row>
                         </div>
                     </CardBody>

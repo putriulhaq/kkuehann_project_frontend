@@ -34,7 +34,8 @@ if (process.env.NODE_ENV === 'development') {
 export const GET_LATEST_TRANSACTION = BASE_URL +  "/order/latest-order"
 export const GET_CARD_INFORMATION = BASE_URL +  "/dash/card-information" 
 export const GET_NOTIFICATION = BASE_URL +  "/dash/notification" 
-export const GET_TOP_SELLING = BASE_URL +  "/dash/top-selling" 
+export const GET_TOP_SELLING = BASE_URL +  "/dash/top-selling"  
+export const GET_SALES_SUMMARY = BASE_URL +  "/dash/sales-summary"  
 
 
 export const POST_ORDER = BASE_URL + "/order"
