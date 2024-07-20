@@ -16,6 +16,7 @@ import { AuthProtected } from "./AuthProtected";
 import { authProtectedRoutes, publicRoutes } from "./routes";
 
 import { createSelector } from 'reselect';
+import ProtectedRoute from "./ProtectedRoute";
 
 const getLayout = (layoutType) => {
   let Layout = VerticalLayout;
