@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withRouter from "../components/Common/withRouter";
+import { Navigate, Outlet } from 'react-router-dom';
 
 const NonAuthLayout = (props) => {
-  return (
-    <React.Fragment>{props.children}</React.Fragment>
-  );
+
+    const isAuthenticated = localStorage.getItem('authToken');
+    // if (!isAuthenticated && loading) {
+    //   return (
+    //     <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
+    //   );
+    // }
+    // return <>{props.children}</>;
+    return isAuthenticated ? <Navigate to="/dashboard" /> : <Outlet/>;
+    <Outlet/>
 };
 
 NonAuthLayout.propTypes = {

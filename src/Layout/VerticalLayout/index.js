@@ -22,6 +22,7 @@ import {
 } from "../../store/actions";
 
 import { createSelector } from 'reselect';
+import { Outlet } from 'react-router-dom';
 
 const Layout = props => {
   const dispatch = useDispatch();
@@ -152,7 +153,7 @@ const Layout = props => {
           type={leftSideBarType}
           isMobile={isMobile}
         />
-        <div className="main-content">{props.children}</div>
+        <div className="main-content"><Outlet /></div>
         <Footer />
       </div>
       {showRightSidebar ? <RightSidebar /> : null}

@@ -6,9 +6,10 @@ import './assets/scss/theme.scss';
 
 // Fake Backend 
 import fakeBackend from "./helpers/AuthType/fakeBackend";
+import AppRoutes from "./Routes/index";
 
 // Activating fake backend
-fakeBackend();
+// fakeBackend();
 
 // Firebase
 // Import Firebase Configuration file
@@ -31,9 +32,7 @@ fakeBackend();
 
 function App() {
   return (
-    <React.Fragment>
-      <Routes />
-    </React.Fragment>
+    <AppRoutes />
   );
 }
 

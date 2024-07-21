@@ -21,6 +21,7 @@ import Footer from "./Footer";
 import RightSidebar from "../../components/Common/RightSideBar";
 
 import { createSelector } from 'reselect';
+import { Outlet } from "react-router-dom";
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -111,7 +112,7 @@ const { topbarTheme, layoutWidth, showRightSidebar, layoutModeTypes } = useSelec
           openLeftMenuCallBack={openMenu}
         />
         <Navbar />
-        <div className="main-content">{props.children}</div>
+        <div className="main-content"><Outlet /></div>
         <Footer />
       </div>
 

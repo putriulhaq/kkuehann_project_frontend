@@ -1,18 +1,18 @@
 import React from "react";
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route, Outlet } from "react-router-dom";
 
 import { useProfile } from "../Hooks/UserHooks";
 
 const AuthProtected = (props) => {
   const { userProfile, loading } = useProfile();
   const isAuthenticated = localStorage.getItem('authToken');
-  if (!isAuthenticated && loading) {
-    return (
-      <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
-    );
-  }
-
-  return <>{props.children}</>;
+  // if (!isAuthenticated && loading) {
+  //   return (
+  //     <Navigate to={{ pathname: "/login", state: { from: props.location } }} />
+  //   );
+  // }
+  // return <>{props.children}</>;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
 const AccessRoute = ({ component: Component, ...rest }) => {

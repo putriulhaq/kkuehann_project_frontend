@@ -115,10 +115,10 @@
                       </Link>
                     </div>
                     <h4 className="font-size-18 text-muted mt-2 text-center">
-                      Welcome Back !
+                      Welcome Back!
                     </h4>
                     <p className="mb-5 text-center">
-                      Sign in to continue to Upzet.
+                      Sign in to continue to Kue + Han.
                     </p>
                     <Form
                       className="form-horizontal"
@@ -204,7 +204,7 @@
                             </button>
                           </div>
                           <div className="mt-4 text-center">
-                        <h5 className="font-size-14 mb-3">Sign in with</h5>
+                        {/* <h5 className="font-size-14 mb-3">Sign in with</h5> */}
                       </div>
 
                         </Col>
@@ -213,7 +213,7 @@
                   </div>
                 </CardBody>
               </Card>
-              <div className="mt-5 text-center">
+              {/* <div className="mt-5 text-center">
                 <p className="text-white-50">
                   Don't have an account ?{" "}
                   <Link to="/register" className="fw-medium text-primary">
@@ -225,7 +225,7 @@
                   © {new Date().getFullYear()} Upzet. Crafted with{" "}
                   <i className="mdi mdi-heart text-danger"></i> by Themesdesign
                 </p>
-              </div>
+              </div> */}
             </Col>
           </Row>
         </Container>
