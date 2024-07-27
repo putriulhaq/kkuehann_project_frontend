@@ -19,7 +19,7 @@ const MenuTables = () => {
     const [modal_detail, setModalDetail] = useState(false);
     const [formData, setFormData] = useState({
         menu_name: "",
-        priceist: "",
+        pricelist: "",
         description: "",
     });
 
@@ -140,7 +140,7 @@ const MenuTables = () => {
                                                         </th> */}
                                                         <th className="sort" data-sort="menu_name">No</th>
                                                         <th className="sort" data-sort="menu_name">Menu Name</th>
-                                                        <th className="sort" data-sort="priceist">Pricelist</th>
+                                                        <th className="sort" data-sort="pricelist">Pricelist</th>
                                                         <th className="sort" data-sort="description">Description</th>
                                                         <th className="sort" data-sort="action">Action</th>
                                                     </tr>
@@ -155,7 +155,7 @@ const MenuTables = () => {
                                                         </th> */}
                                                         <td className="menu_name">{index + 1}</td>
                                                         <td className="menu_name">{data.menu_name}</td>
-                                                        <td className="priceist">{data.pricelist}</td>
+                                                        <td className="pricelist">{data.pricelist}</td>
                                                         <td className="description">{data.description}</td>
                                                         <td>
                                                             <div className="d-flex gap-2">
@@ -220,8 +220,8 @@ const MenuTables = () => {
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="priceist" className="form-label">Prices</label>
-                            <input type="number" id="priceist" name='priceist' onChange={handleChange} className="form-control" placeholder="Enter Prices" value={formData.priceist || ''} required />
+                            <label htmlFor="pricelist" className="form-label">Prices</label>
+                            <input type="number" id="pricelist" name='pricelist' onChange={handleChange} className="form-control" placeholder="Enter Prices" value={formData.pricelist || ''} required />
                         </div>
 
                         <div className="mb-3">
